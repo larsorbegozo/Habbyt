@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/habitListFragment">
+
+    <fragment
+        android:id="@+id/habitListFragment"
+        android:name="com.example.habbyt.ui.HabitListFragment"
+        android:label="HabitListFragment" >
+        <action
+            android:id="@+id/action_habitListFragment_to_addEditHabitFragment"
+            app:destination="@id/addEditHabitFragment" />
+        <action
+            android:id="@+id/action_habitListFragment_to_detailHabitFragment"
+            app:destination="@id/detailHabitFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addEditHabitFragment"
+        android:name="com.example.habbyt.ui.AddEditHabitFragment"
+        android:label="fragment_add_edit_habit"
+        tools:layout="@layout/fragment_add_edit_habit" >
+        <argument
+            android:name="id"
+            app:argType="long"
+            android:defaultValue="0L" />
+        <action
+            android:id="@+id/action_addEditHabitFragment_to_habitListFragment"
+            app:destination="@id/habitListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailHabitFragment"
+        android:name="com.example.habbyt.ui.DetailHabitFragment"
+        android:label="fragment_detail_habit"
+        tools:layout="@layout/fragment_detail_habit" >
+        <action
+            android:id="@+id/action_detailHabitFragment_to_addEditHabitFragment"
+            app:destination="@id/addEditHabitFragment" />
+        <argument
+            android:name="id"
+            app:argType="long"
+            android:defaultValue="0L" />
+    </fragment>
+</navigation>
