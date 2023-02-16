@@ -49,13 +49,13 @@ class AddEditHabitFragment : Fragment() {
                 habit = selectedHabit
                 bindHabit(habit)
             }
-
+            // DELETE HABIT
             binding?.deleteHabitButton?.visibility = View.VISIBLE
             binding?.deleteHabitButton?.setOnClickListener {
                 deleteHabit(habit)
             }
-
         } else {
+            // ADD HABIT
             binding?.saveAction?.setOnClickListener {
                 addHabit(binding!!.itemName.text.toString())
             }
@@ -63,14 +63,15 @@ class AddEditHabitFragment : Fragment() {
     }
 
     private fun addHabit(name: String) {
-        viewModel.addHabit(name)
+        viewModel.addHabit(name, false) // false because the new habit doesn't need to be checked
         findNavController().navigate(R.id.action_addEditHabitFragment_to_habitListFragment)
     }
 
     private fun updateHabit() {
         viewModel.updateHabit(
             navigationArgs.id,
-            binding?.itemName?.text.toString()
+            binding?.itemName?.text.toString(),
+            habit.status
         )
         val action = AddEditHabitFragmentDirections.actionAddEditHabitFragmentToHabitListFragment()
         findNavController().navigate(action)

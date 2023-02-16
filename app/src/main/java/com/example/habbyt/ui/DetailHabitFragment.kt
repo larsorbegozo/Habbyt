@@ -9,7 +9,6 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.habbyt.BaseApplication
-import com.example.habbyt.R
 import com.example.habbyt.databinding.FragmentDetailHabitBinding
 import com.example.habbyt.model.Habit
 import com.example.habbyt.ui.viewmodel.HabitViewModel
@@ -34,7 +33,7 @@ class DetailHabitFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding = FragmentDetailHabitBinding.inflate(layoutInflater, container, false)
         return binding.root
