@@ -1,7 +1,7 @@
-package com.example.habbyt.data
+package com.larsorbegozo.habbyt.data
 
 import androidx.room.*
-import com.example.habbyt.model.Habit
+import com.larsorbegozo.habbyt.model.Habit
 import kotlinx.coroutines.flow.Flow
 
 @Dao

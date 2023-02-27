@@ -1,21 +1,24 @@
-package com.example.habbyt.ui
+package com.larsorbegozo.habbyt.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.habbyt.BaseApplication
 import com.example.habbyt.R
 import com.example.habbyt.databinding.FragmentHabitListBinding
-import com.example.habbyt.model.Habit
-import com.example.habbyt.ui.adapter.HabitListAdapter
-import com.example.habbyt.ui.viewmodel.HabitViewModel
-import com.example.habbyt.ui.viewmodel.HabitViewModelFactory
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.larsorbegozo.habbyt.BaseApplication
+import com.larsorbegozo.habbyt.model.Habit
+import com.larsorbegozo.habbyt.ui.adapter.HabitListAdapter
+import com.larsorbegozo.habbyt.ui.viewmodel.HabitViewModel
+import com.larsorbegozo.habbyt.ui.viewmodel.HabitViewModelFactory
 
 class HabitListFragment : Fragment(), HabitListAdapter.OnItemClickListener {
 
@@ -48,12 +51,16 @@ class HabitListFragment : Fragment(), HabitListAdapter.OnItemClickListener {
             }
         }
 
+        val fabButton = activity?.findViewById<FloatingActionButton>(R.id.add_habit_fab)
+        fabButton?.setOnClickListener {
+            findNavController().navigate(R.id.action_habitListFragment_to_addEditHabitFragment)
+        }
+
         binding.apply {
             recyclerViewMenu.adapter = adapter
             recyclerViewMenu.layoutManager = LinearLayoutManager(context)
-            addHabitFab.setOnClickListener {
-                findNavController().navigate(R.id.action_habitListFragment_to_addEditHabitFragment)
-            }
+            topBar.setTitle(R.string.list_fragment)
+            /*bottomBarNavigation.menu.getItem(2).isEnabled = false*/
         }
 
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
@@ -74,5 +81,25 @@ class HabitListFragment : Fragment(), HabitListAdapter.OnItemClickListener {
 
     override fun onCheckboxClick(habit: Habit, isChecked: Boolean) {
         viewModel.onHabitCheckedChanged(habit, isChecked)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
+        R.id.search_item -> {
+            // User chose the "Settings" item, show the app settings UI...
+            findNavController().navigate(R.id.action_habitListFragment_to_addEditHabitFragment)
+            true
+        }
+
+        R.id.sort_item -> {
+            // User chose the "Favorite" action, mark the current item
+            // as a favorite...
+            true
+        }
+
+        else -> {
+            // If we got here, the user's action was not recognized.
+            // Invoke the superclass to handle it.
+            super.onOptionsItemSelected(item)
+        }
     }
 }

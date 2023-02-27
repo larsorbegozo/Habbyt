@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Habbyt</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="detail_fragment">Habit Detail</string>
+    <string name="add_fragment">Add Habit</string>
+    <string name="list_fragment">Habit List</string>
 </resources>

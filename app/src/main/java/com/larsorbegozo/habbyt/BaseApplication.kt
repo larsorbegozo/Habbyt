@@ -1,7 +1,7 @@
-package com.example.habbyt
+package com.larsorbegozo.habbyt
 
 import android.app.Application
-import com.example.habbyt.data.HabitDatabase
+import com.larsorbegozo.habbyt.data.HabitDatabase
 
 class BaseApplication : Application() {
 

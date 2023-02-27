@@ -1,10 +1,10 @@
-package com.example.habbyt.data
+package com.larsorbegozo.habbyt.data
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.habbyt.model.Habit
+import com.larsorbegozo.habbyt.model.Habit
 
 @Database(entities = [Habit::class], version = 1, exportSchema = false)
 abstract class HabitDatabase : RoomDatabase() {

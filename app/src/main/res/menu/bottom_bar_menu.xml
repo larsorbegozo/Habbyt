@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/habitListFragment"
+        android:icon="@drawable/habit_list_icon"
+        android:title="List"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/calendar"
+        android:icon="@drawable/calendar_icon"
+        android:title="Calendar"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/place_holder"
+        android:title=""/>
+
+    <item
+        android:id="@+id/achievementFragment"
+        android:icon="@drawable/achievements_icon"
+        android:title="Achievements"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/settings"
+        android:icon="@drawable/settings_icon"
+        android:title="Settings"
+        app:showAsAction="always"/>
+
+</menu>

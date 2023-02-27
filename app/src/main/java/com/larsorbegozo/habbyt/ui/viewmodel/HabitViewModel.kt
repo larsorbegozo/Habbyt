@@ -1,8 +1,9 @@
-package com.example.habbyt.ui.viewmodel
+package com.larsorbegozo.habbyt.ui.viewmodel
 
+import android.view.View
 import androidx.lifecycle.*
-import com.example.habbyt.data.HabitDao
-import com.example.habbyt.model.Habit
+import com.larsorbegozo.habbyt.data.HabitDao
+import com.larsorbegozo.habbyt.model.Habit
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
@@ -21,11 +22,11 @@ class HabitViewModel(private val habitDao: HabitDao) : ViewModel() {
 
     fun addHabit(
         name: String,
-        status: Boolean
+        status: Boolean,
     ) {
         val habit = Habit(
             name = name,
-            status = status
+            status = status,
         )
 
         viewModelScope.launch {
@@ -36,7 +37,7 @@ class HabitViewModel(private val habitDao: HabitDao) : ViewModel() {
     fun updateHabit(
         id: Long,
         name: String,
-        status: Boolean
+        status: Boolean,
     ) {
         val updatedHabit = Habit(id, name, status)
         viewModelScope.launch(Dispatchers.IO) {

@@ -1,4 +1,4 @@
-package com.example.habbyt.ui
+package com.larsorbegozo.habbyt.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,12 +8,14 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.example.habbyt.BaseApplication
 import com.example.habbyt.R
 import com.example.habbyt.databinding.FragmentAddEditHabitBinding
-import com.example.habbyt.model.Habit
-import com.example.habbyt.ui.viewmodel.HabitViewModel
-import com.example.habbyt.ui.viewmodel.HabitViewModelFactory
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.larsorbegozo.habbyt.BaseApplication
+import com.larsorbegozo.habbyt.model.Habit
+import com.larsorbegozo.habbyt.ui.viewmodel.HabitViewModel
+import com.larsorbegozo.habbyt.ui.viewmodel.HabitViewModelFactory
 
 class AddEditHabitFragment : Fragment() {
 
@@ -57,7 +59,18 @@ class AddEditHabitFragment : Fragment() {
         } else {
             // ADD HABIT
             binding?.saveAction?.setOnClickListener {
-                addHabit(binding!!.itemName.text.toString())
+                addHabit(
+                    binding!!.itemName.text.toString())
+            }
+        }
+
+        // Bind toolbar
+        binding?.apply {
+            topBar.inflateMenu(R.menu.top_bar_add_menu)
+            topBar.setNavigationIcon(R.drawable.arrow_back)
+            topBar.setTitle(R.string.add_fragment)
+            topBar.setNavigationOnClickListener {
+                findNavController().navigateUp()
             }
         }
     }

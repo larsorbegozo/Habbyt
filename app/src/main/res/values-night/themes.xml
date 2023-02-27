@@ -19,11 +19,20 @@
 
     <style name="Widget.App.Toolbar" parent="Widget.MaterialComponents.Toolbar.Primary">
         <item name="materialThemeOverlay">@style/ThemeOverlay.App.Toolbar</item>
+        <item name="navigationIconTint">@color/orange_200</item>
     </style>
 
     <style name="ThemeOverlay.App.Toolbar" parent="">
         <item name="colorPrimary">@color/red_700</item>
         <item name="colorPrimaryVariant">@color/red_A700</item>
         <item name="colorOnPrimary">@color/orange_200</item>
+    </style>
+
+    <style name="Checkbox">
+        <item name="buttonTint">@color/orange_200</item>
+    </style>
+
+    <style name="habitIcon">
+        <item name="android:tint">#FFFFFF</item>
     </style>
 </resources>

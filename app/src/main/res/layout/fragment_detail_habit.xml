@@ -4,29 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.DetailHabitFragment">
+    tools:context="com.larsorbegozo.habbyt.ui.DetailHabitFragment">
 
     <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/toolbar"
-        style="@style/Widget.App.Toolbar"
-        app:title="Habit Details"
+        android:id="@+id/top_bar"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:fitsSystemWindows="true"
+        android:background="@color/red_700"
+        app:menu="@menu/top_bar_menu"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>
-
-    <!-- ImageView
-        android:id="@+id/label_image_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/baseline_label_24"
-        android:layout_marginStart="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/habit_name"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
-        app:layout_constraintBottom_toBottomOf="@id/habit_name" -->
 
     <TextView
         android:id="@+id/habit_name_title"
@@ -35,11 +23,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginStart="8dp"
+        android:textSize="20sp"
         android:text="Habit name: "
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
-        android:textSize="20sp"
-        />
+        app:layout_constraintTop_toBottomOf="@id/top_bar"/>
+
 
     <TextView
         android:id="@+id/habit_name"
@@ -57,7 +45,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:src="@drawable/baseline_edit_24"
+        android:src="@drawable/edit_habit"
         app:tint="@color/red_700"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

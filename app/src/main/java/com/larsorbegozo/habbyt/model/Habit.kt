@@ -1,4 +1,4 @@
-package com.example.habbyt.model
+package com.larsorbegozo.habbyt.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

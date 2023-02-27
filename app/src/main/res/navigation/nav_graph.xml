@@ -7,39 +7,53 @@
 
     <fragment
         android:id="@+id/habitListFragment"
-        android:name="com.example.habbyt.ui.HabitListFragment"
-        android:label="HabitListFragment" >
+        android:name="com.larsorbegozo.habbyt.ui.HabitListFragment"
+        android:label="Habit List">
         <action
             android:id="@+id/action_habitListFragment_to_addEditHabitFragment"
             app:destination="@id/addEditHabitFragment" />
         <action
             android:id="@+id/action_habitListFragment_to_detailHabitFragment"
             app:destination="@id/detailHabitFragment" />
+        <action
+            android:id="@+id/action_habitListFragment_to_achievementFragment"
+            app:destination="@id/achievementFragment" />
     </fragment>
     <fragment
         android:id="@+id/addEditHabitFragment"
-        android:name="com.example.habbyt.ui.AddEditHabitFragment"
-        android:label="fragment_add_edit_habit"
-        tools:layout="@layout/fragment_add_edit_habit" >
+        android:name="com.larsorbegozo.habbyt.ui.AddEditHabitFragment"
+        android:label="Add Habit"
+        tools:layout="@layout/fragment_add_edit_habit">
         <argument
             android:name="id"
-            app:argType="long"
-            android:defaultValue="0L" />
+            android:defaultValue="0L"
+            app:argType="long" />
         <action
             android:id="@+id/action_addEditHabitFragment_to_habitListFragment"
             app:destination="@id/habitListFragment" />
+        <action
+            android:id="@+id/action_addEditHabitFragment_to_detailHabitFragment"
+            app:destination="@id/detailHabitFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailHabitFragment"
-        android:name="com.example.habbyt.ui.DetailHabitFragment"
-        android:label="fragment_detail_habit"
-        tools:layout="@layout/fragment_detail_habit" >
+        android:name="com.larsorbegozo.habbyt.ui.DetailHabitFragment"
+        android:label="Habit Details"
+        tools:layout="@layout/fragment_detail_habit">
         <action
             android:id="@+id/action_detailHabitFragment_to_addEditHabitFragment"
             app:destination="@id/addEditHabitFragment" />
         <argument
             android:name="id"
-            app:argType="long"
-            android:defaultValue="0L" />
+            android:defaultValue="0L"
+            app:argType="long" />
+        <action
+            android:id="@+id/action_detailHabitFragment_to_habitListFragment"
+            app:destination="@id/habitListFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/achievementFragment"
+        android:name="com.larsorbegozo.habbyt.ui.AchievementFragment"
+        android:label="fragment_achievement"
+        tools:layout="@layout/fragment_achievement" />
 </navigation>

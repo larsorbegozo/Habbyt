@@ -1,13 +1,12 @@
-package com.example.habbyt.ui.adapter
+package com.larsorbegozo.habbyt.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.AdapterView.OnItemClickListener
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.habbyt.databinding.ListItemHabitBinding
-import com.example.habbyt.model.Habit
+import com.larsorbegozo.habbyt.model.Habit
 
 class HabitListAdapter(private val listener: OnItemClickListener) : ListAdapter<Habit, HabitListAdapter.HabitViewHolder>(DiffCallback){
 
@@ -33,7 +32,7 @@ class HabitListAdapter(private val listener: OnItemClickListener) : ListAdapter<
         }
 
         fun bind(habit: Habit) {
-            binding.textViewHabit.text = habit.name
+            binding.habitName.text = habit.name
             binding.checkbox.isChecked = habit.status
         }
     }

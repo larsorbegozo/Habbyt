@@ -1,4 +1,4 @@
-package com.example.habbyt
+package com.larsorbegozo.habbyt
 
 import org.junit.Test
 
