@@ -73,7 +73,6 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }, true)
-
     }
 
     override fun onSupportNavigateUp(): Boolean {

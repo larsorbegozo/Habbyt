@@ -10,8 +10,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.habbyt.R
 import com.example.habbyt.databinding.FragmentAddEditHabitBinding
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.larsorbegozo.habbyt.BaseApplication
 import com.larsorbegozo.habbyt.model.Habit
 import com.larsorbegozo.habbyt.ui.viewmodel.HabitViewModel
@@ -21,7 +19,7 @@ class AddEditHabitFragment : Fragment() {
 
     private val viewModel: HabitViewModel by activityViewModels() {
         HabitViewModelFactory(
-            (activity?.application as BaseApplication).database.HabitDao()
+            (activity?.application as BaseApplication).habitDatabase.HabitDao()
         )
     }
 

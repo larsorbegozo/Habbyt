@@ -1,25 +1,25 @@
-package com.larsorbegozo.habbyt.data
+package com.larsorbegozo.habbyt.data.mood
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.larsorbegozo.habbyt.model.Habit
+import com.larsorbegozo.habbyt.model.Mood
 
-@Database(entities = [Habit::class], version = 1, exportSchema = false)
-abstract class HabitDatabase : RoomDatabase() {
-    abstract fun HabitDao(): HabitDao
+@Database(entities = [Mood::class], version = 1, exportSchema = false)
+abstract class MoodDatabase : RoomDatabase() {
+    abstract fun MoodDao(): MoodDao
 
     companion object {
         @Volatile
-        private var INSTANCE: HabitDatabase? = null
+        private var INSTANCE: MoodDatabase? = null
 
-        fun getDatabase(context: Context): HabitDatabase {
+        fun getDatabase(context: Context): MoodDatabase {
             return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
-                    HabitDatabase::class.java,
-                    "habit_database"
+                    MoodDatabase::class.java,
+                    "mood_database"
                 )
                     .fallbackToDestructiveMigration()
                     .build()

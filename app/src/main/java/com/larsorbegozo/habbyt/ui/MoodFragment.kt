@@ -5,20 +5,25 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.habbyt.R
 import com.example.habbyt.databinding.FragmentMoodBinding
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.larsorbegozo.habbyt.BaseApplication
 import com.larsorbegozo.habbyt.model.Habit
-import com.larsorbegozo.habbyt.ui.viewmodel.HabitViewModel
-import com.larsorbegozo.habbyt.ui.viewmodel.HabitViewModelFactory
+import com.larsorbegozo.habbyt.model.Mood
+import com.larsorbegozo.habbyt.ui.adapter.MoodListAdapter
+import com.larsorbegozo.habbyt.ui.viewmodel.MoodViewModel
+import com.larsorbegozo.habbyt.ui.viewmodel.MoodViewModelFactory
 
 
-class MoodFragment : Fragment() {
+class MoodFragment : Fragment(), MoodListAdapter.OnItemClickListener {
 
-    private val viewModel: HabitViewModel by activityViewModels() {
-        HabitViewModelFactory(
-            (activity?.application as BaseApplication).database.HabitDao()
+    private val viewModel: MoodViewModel by activityViewModels {
+        MoodViewModelFactory(
+            (activity?.application as BaseApplication).moodDatabase.MoodDao()
         )
     }
 
@@ -37,5 +42,33 @@ class MoodFragment : Fragment() {
         _binding = FragmentMoodBinding.inflate(layoutInflater, container, false)
         return binding?.root
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val adapter = MoodListAdapter(this)
+
+        viewModel.allMoods.observe(this.viewLifecycleOwner) {
+            moods -> moods.let {
+                adapter.submitList(it)
+            }
+        }
+
+        val fabButton = activity?.findViewById<FloatingActionButton>(R.id.add_habit_fab)
+        fabButton?.setOnClickListener {
+            Toast.makeText(activity, "Mood button working", Toast.LENGTH_SHORT).show()
+        }
+
+        binding?.apply {
+            recyclerViewMood.adapter = adapter
+            recyclerViewMood.layoutManager = LinearLayoutManager(context)
+        }
+    }
+
+    override fun onItemClick(mood: Mood) {
+        viewModel.onMoodSelected(mood)
+    }
+
+
 
 }

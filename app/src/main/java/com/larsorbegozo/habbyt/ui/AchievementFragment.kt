@@ -4,10 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.navArgs
+import com.example.habbyt.R
 import com.example.habbyt.databinding.FragmentAchievementBinding
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.larsorbegozo.habbyt.BaseApplication
 import com.larsorbegozo.habbyt.model.Habit
 import com.larsorbegozo.habbyt.ui.viewmodel.HabitViewModel
@@ -18,7 +21,7 @@ class AchievementFragment : Fragment() {
 
     private val viewModel: HabitViewModel by activityViewModels() {
         HabitViewModelFactory(
-            (activity?.application as BaseApplication).database.HabitDao()
+            (activity?.application as BaseApplication).habitDatabase.HabitDao()
         )
     }
 
@@ -36,6 +39,15 @@ class AchievementFragment : Fragment() {
         // Inflate the layout for this fragment
         _binding = FragmentAchievementBinding.inflate(layoutInflater, container, false)
         return binding?.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val fabButton = activity?.findViewById<FloatingActionButton>(R.id.add_habit_fab)
+        fabButton?.setOnClickListener {
+            Toast.makeText(activity, "Achievement button working!", Toast.LENGTH_SHORT).show()
+        }
     }
 
 }

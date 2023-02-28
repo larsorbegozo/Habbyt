@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.AppBarConfiguration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.habbyt.R
 import com.example.habbyt.databinding.FragmentHabitListBinding
@@ -24,7 +23,7 @@ class HabitListFragment : Fragment(), HabitListAdapter.OnItemClickListener {
 
     private val viewModel: HabitViewModel by activityViewModels {
         HabitViewModelFactory(
-            (activity?.application as BaseApplication).database.HabitDao()
+            (activity?.application as BaseApplication).habitDatabase.HabitDao()
         )
     }
     // Backing property is recommended for Fragments, I think.
@@ -57,8 +56,8 @@ class HabitListFragment : Fragment(), HabitListAdapter.OnItemClickListener {
         }
 
         binding.apply {
-            recyclerViewMenu.adapter = adapter
-            recyclerViewMenu.layoutManager = LinearLayoutManager(context)
+            recyclerViewHabit.adapter = adapter
+            recyclerViewHabit.layoutManager = LinearLayoutManager(context)
             topBar.setTitle(R.string.list_fragment)
         }
 

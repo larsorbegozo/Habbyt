@@ -1,8 +1,7 @@
 package com.larsorbegozo.habbyt.ui.viewmodel
 
-import android.view.View
 import androidx.lifecycle.*
-import com.larsorbegozo.habbyt.data.HabitDao
+import com.larsorbegozo.habbyt.data.habit.HabitDao
 import com.larsorbegozo.habbyt.model.Habit
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.receiveAsFlow

@@ -20,7 +20,7 @@ class DetailHabitFragment : Fragment() {
 
     private val viewModel: HabitViewModel by activityViewModels() {
         HabitViewModelFactory(
-            (activity?.application as BaseApplication).database.HabitDao()
+            (activity?.application as BaseApplication).habitDatabase.HabitDao()
         )
     }
 
