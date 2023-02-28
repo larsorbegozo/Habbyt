@@ -54,7 +54,6 @@ class DetailHabitFragment : Fragment() {
         binding.apply {
             topBar.inflateMenu(R.menu.top_bar_detail_menu)
             topBar.setNavigationIcon(R.drawable.arrow_back)
-            topBar.setTitle(R.string.detail_fragment)
             topBar.setNavigationOnClickListener {
                 findNavController().navigateUp()
             }
@@ -62,6 +61,7 @@ class DetailHabitFragment : Fragment() {
     }
 
     private fun bindHabit() {
+        binding.topBar.title = "Habit Details"
         binding.habitName.text = habit.name
         binding.editHabitFab.setOnClickListener {
             val action = DetailHabitFragmentDirections.actionDetailHabitFragmentToAddEditHabitFragment(habit.id)

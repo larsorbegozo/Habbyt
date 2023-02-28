@@ -9,9 +9,9 @@
         app:showAsAction="always"/>
 
     <item
-        android:id="@+id/calendar"
-        android:icon="@drawable/calendar_icon"
-        android:title="Calendar"
+        android:id="@+id/moodFragment"
+        android:icon="@drawable/mood_icon"
+        android:title="Mood"
         app:showAsAction="always"/>
 
     <item
@@ -25,7 +25,7 @@
         app:showAsAction="always"/>
 
     <item
-        android:id="@+id/settings"
+        android:id="@+id/settingsFragment"
         android:icon="@drawable/settings_icon"
         android:title="Settings"
         app:showAsAction="always"/>

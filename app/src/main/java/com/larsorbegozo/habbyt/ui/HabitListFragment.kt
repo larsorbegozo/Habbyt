@@ -60,7 +60,6 @@ class HabitListFragment : Fragment(), HabitListAdapter.OnItemClickListener {
             recyclerViewMenu.adapter = adapter
             recyclerViewMenu.layoutManager = LinearLayoutManager(context)
             topBar.setTitle(R.string.list_fragment)
-            /*bottomBarNavigation.menu.getItem(2).isEnabled = false*/
         }
 
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {

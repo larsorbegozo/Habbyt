@@ -1,33 +1,26 @@
 package com.larsorbegozo.habbyt
 
-import android.app.appsearch.observer.ObserverSpec
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.transition.Slide
 import android.transition.TransitionManager
 import android.view.Gravity
-import android.view.MenuItem
+import android.view.Menu
 import android.view.View
-import androidx.appcompat.widget.Toolbar
+import androidx.activity.viewModels
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.get
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI.setupWithNavController
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
+import androidx.room.util.query
 import com.example.habbyt.R
 import com.example.habbyt.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.larsorbegozo.habbyt.model.Habit
-import com.larsorbegozo.habbyt.ui.AchievementFragment
 import com.larsorbegozo.habbyt.ui.AddEditHabitFragment
-import com.larsorbegozo.habbyt.ui.HabitListFragment
+import com.larsorbegozo.habbyt.ui.DetailHabitFragment
+import com.larsorbegozo.habbyt.ui.adapter.HabitListAdapter
 import com.larsorbegozo.habbyt.ui.viewmodel.HabitViewModel
 
 class MainActivity : AppCompatActivity() {
@@ -63,6 +56,11 @@ class MainActivity : AppCompatActivity() {
                 TransitionManager.beginDelayedTransition(binding.root, Slide(Gravity.BOTTOM).excludeTarget(R.id.nav_host_fragment, true))
                 when (f) {
                     is AddEditHabitFragment -> {
+                        binding.bottomBarNavigation.visibility = View.INVISIBLE
+                        binding.bottomBar.visibility = View.INVISIBLE
+                        binding.addHabitFab.visibility = View.INVISIBLE
+                    }
+                    is DetailHabitFragment -> {
                         binding.bottomBarNavigation.visibility = View.INVISIBLE
                         binding.bottomBar.visibility = View.INVISIBLE
                         binding.addHabitFab.visibility = View.INVISIBLE

@@ -18,6 +18,12 @@
         <action
             android:id="@+id/action_habitListFragment_to_achievementFragment"
             app:destination="@id/achievementFragment" />
+        <action
+            android:id="@+id/action_habitListFragment_to_moodFragment"
+            app:destination="@id/moodFragment" />
+        <action
+            android:id="@+id/action_habitListFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/addEditHabitFragment"
@@ -56,4 +62,14 @@
         android:name="com.larsorbegozo.habbyt.ui.AchievementFragment"
         android:label="fragment_achievement"
         tools:layout="@layout/fragment_achievement" />
+    <fragment
+        android:id="@+id/moodFragment"
+        android:name="com.larsorbegozo.habbyt.ui.MoodFragment"
+        android:label="fragment_mood"
+        tools:layout="@layout/fragment_mood" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.larsorbegozo.habbyt.ui.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
 </navigation>

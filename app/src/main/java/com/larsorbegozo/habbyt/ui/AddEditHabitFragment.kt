@@ -62,13 +62,13 @@ class AddEditHabitFragment : Fragment() {
                 addHabit(
                     binding!!.itemName.text.toString())
             }
+            binding?.topBar?.title = "Add Habit"
         }
 
         // Bind toolbar
         binding?.apply {
             topBar.inflateMenu(R.menu.top_bar_add_menu)
             topBar.setNavigationIcon(R.drawable.arrow_back)
-            topBar.setTitle(R.string.add_fragment)
             topBar.setNavigationOnClickListener {
                 findNavController().navigateUp()
             }
@@ -98,6 +98,7 @@ class AddEditHabitFragment : Fragment() {
     }
 
     private fun bindHabit(habit: Habit) {
+        binding?.topBar?.title = "Edit Habit"
         binding?.itemName?.setText(habit.name)
         binding?.saveAction?.setOnClickListener {
             updateHabit()
