@@ -64,12 +64,45 @@
         tools:layout="@layout/fragment_achievement" />
     <fragment
         android:id="@+id/moodFragment"
-        android:name="com.larsorbegozo.habbyt.ui.MoodFragment"
+        android:name="com.larsorbegozo.habbyt.ui.MoodListFragment"
         android:label="fragment_mood"
-        tools:layout="@layout/fragment_mood" />
+        tools:layout="@layout/fragment_mood" >
+        <action
+            android:id="@+id/action_moodFragment_to_detailMoodFragment"
+            app:destination="@id/detailMoodFragment" />
+        <action
+            android:id="@+id/action_moodFragment_to_addEditMoodFragment"
+            app:destination="@id/addEditMoodFragment" />
+    </fragment>
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.larsorbegozo.habbyt.ui.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/addEditMoodFragment"
+        android:name="com.larsorbegozo.habbyt.ui.AddEditMoodFragment"
+        android:label="fragment_add_edit_mood"
+        tools:layout="@layout/fragment_add_edit_mood" >
+        <argument
+            android:name="id"
+            app:argType="long"
+            android:defaultValue="0L" />
+        <action
+            android:id="@+id/action_addEditMoodFragment_to_moodFragment"
+            app:destination="@id/moodFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailMoodFragment"
+        android:name="com.larsorbegozo.habbyt.ui.DetailMoodFragment"
+        android:label="fragment_detail_mood"
+        tools:layout="@layout/fragment_detail_mood" >
+        <action
+            android:id="@+id/action_detailMoodFragment_to_addEditMoodFragment"
+            app:destination="@id/addEditMoodFragment" />
+        <argument
+            android:name="id"
+            app:argType="long"
+            android:defaultValue="0L" />
+    </fragment>
 </navigation>

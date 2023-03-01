@@ -3,6 +3,7 @@ package com.larsorbegozo.habbyt.ui.viewmodel
 import androidx.lifecycle.*
 import com.larsorbegozo.habbyt.data.mood.MoodDao
 import com.larsorbegozo.habbyt.model.Mood
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
@@ -31,6 +32,24 @@ class MoodViewModel (private val moodDao: MoodDao) : ViewModel() {
 
         viewModelScope.launch {
             moodDao.insert(mood)
+        }
+    }
+
+    fun updateMood(
+        id: Long,
+        title: String,
+        text: String,
+        date: String
+    ) {
+        val updatedMood = Mood(id, title, text, date)
+        viewModelScope.launch(Dispatchers.IO) {
+            moodDao.update(updatedMood)
+        }
+    }
+
+    fun deleteMood(mood: Mood) {
+        viewModelScope.launch(Dispatchers.IO) {
+            moodDao.delete(mood)
         }
     }
 

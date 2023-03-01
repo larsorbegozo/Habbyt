@@ -42,9 +42,10 @@ class AddEditHabitFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // EDIT HABIT
+
         val id = navigationArgs.id
         if(id > 0) {
+            // EDIT HABIT
             viewModel.getHabit(id).observe(this.viewLifecycleOwner) { selectedHabit ->
                 habit = selectedHabit
                 bindHabit(habit)

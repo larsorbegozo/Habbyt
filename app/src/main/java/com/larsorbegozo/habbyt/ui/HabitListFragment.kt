@@ -80,24 +80,4 @@ class HabitListFragment : Fragment(), HabitListAdapter.OnItemClickListener {
     override fun onCheckboxClick(habit: Habit, isChecked: Boolean) {
         viewModel.onHabitCheckedChanged(habit, isChecked)
     }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
-        R.id.search_item -> {
-            // User chose the "Settings" item, show the app settings UI...
-            findNavController().navigate(R.id.action_habitListFragment_to_addEditHabitFragment)
-            true
-        }
-
-        R.id.sort_item -> {
-            // User chose the "Favorite" action, mark the current item
-            // as a favorite...
-            true
-        }
-
-        else -> {
-            // If we got here, the user's action was not recognized.
-            // Invoke the superclass to handle it.
-            super.onOptionsItemSelected(item)
-        }
-    }
 }

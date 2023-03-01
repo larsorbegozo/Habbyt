@@ -25,8 +25,6 @@ class AchievementFragment : Fragment() {
         )
     }
 
-    private val navigationArgs: AddEditHabitFragmentArgs by navArgs()
-
     private lateinit var habit: Habit
 
     private var _binding: FragmentAchievementBinding? = null

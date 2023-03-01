@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.habbyt.R
 import com.example.habbyt.databinding.FragmentMoodBinding
@@ -19,17 +21,13 @@ import com.larsorbegozo.habbyt.ui.viewmodel.MoodViewModel
 import com.larsorbegozo.habbyt.ui.viewmodel.MoodViewModelFactory
 
 
-class MoodFragment : Fragment(), MoodListAdapter.OnItemClickListener {
+class MoodListFragment : Fragment(), MoodListAdapter.OnItemClickListener {
 
     private val viewModel: MoodViewModel by activityViewModels {
         MoodViewModelFactory(
             (activity?.application as BaseApplication).moodDatabase.MoodDao()
         )
     }
-
-    //private val navigationArgs: MoodFragmentArgs by navArgs()
-
-    private lateinit var habit: Habit
 
     private var _binding: FragmentMoodBinding? = null
     private val binding get() = _binding
@@ -56,12 +54,23 @@ class MoodFragment : Fragment(), MoodListAdapter.OnItemClickListener {
 
         val fabButton = activity?.findViewById<FloatingActionButton>(R.id.add_habit_fab)
         fabButton?.setOnClickListener {
-            Toast.makeText(activity, "Mood button working", Toast.LENGTH_SHORT).show()
+            findNavController().navigate(R.id.action_moodFragment_to_addEditMoodFragment)
         }
 
         binding?.apply {
             recyclerViewMood.adapter = adapter
             recyclerViewMood.layoutManager = LinearLayoutManager(context)
+        }
+
+        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+            viewModel.moodEvent.collect() { event ->
+                when(event) {
+                    is MoodViewModel.MoodEvent.NavigateToDetailMoodScreen -> {
+                        val action = MoodListFragmentDirections.actionMoodFragmentToDetailMoodFragment(event.mood.id)
+                        findNavController().navigate(action)
+                    }
+                }
+            }
         }
     }
 

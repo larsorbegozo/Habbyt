@@ -33,21 +33,24 @@
             android:layout_marginStart="8dp"
             android:textSize="20sp"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/text"
+            app:layout_constraintBottom_toTopOf="@id/mood_text"
             app:layout_constraintLeft_toRightOf="@id/emoji"
             tools:text="50kg in Bench Press"/>
 
-        <!-- TODO: Hardcoded text -->
         <TextView
             android:id="@+id/mood_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="today I lifted 50kg in bench prees. I'm so proud of myself"
             android:textSize="12sp"
+            android:maxLines="2"
+            android:ellipsize="end"
             app:layout_constraintTop_toBottomOf="@id/mood_title"
-            app:layout_constraintLeft_toLeftOf="@id/mood_title"
+            app:layout_constraintStart_toStartOf="@id/mood_title"
             app:layout_constraintBottom_toBottomOf="parent"
-            tools:text="today I lifted 50kg in bench prees. I'm so proud of myself"/>
+            app:layout_constrainedWidth="true"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="today hiahiahiaI lifted 50kg in bench prees. I'm so proud of myselfahiahhiahiahiahiahiahiahiahiahiahiahiahiahiahiahiahiahiahiahiahiaiahiahiahiahiahiahiahiahia"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

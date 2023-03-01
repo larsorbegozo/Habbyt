@@ -19,7 +19,9 @@ import com.example.habbyt.R
 import com.example.habbyt.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.larsorbegozo.habbyt.ui.AddEditHabitFragment
+import com.larsorbegozo.habbyt.ui.AddEditMoodFragment
 import com.larsorbegozo.habbyt.ui.DetailHabitFragment
+import com.larsorbegozo.habbyt.ui.DetailMoodFragment
 import com.larsorbegozo.habbyt.ui.adapter.HabitListAdapter
 import com.larsorbegozo.habbyt.ui.viewmodel.HabitViewModel
 
@@ -61,6 +63,16 @@ class MainActivity : AppCompatActivity() {
                         binding.addHabitFab.visibility = View.INVISIBLE
                     }
                     is DetailHabitFragment -> {
+                        binding.bottomBarNavigation.visibility = View.INVISIBLE
+                        binding.bottomBar.visibility = View.INVISIBLE
+                        binding.addHabitFab.visibility = View.INVISIBLE
+                    }
+                    is AddEditMoodFragment -> {
+                        binding.bottomBarNavigation.visibility = View.INVISIBLE
+                        binding.bottomBar.visibility = View.INVISIBLE
+                        binding.addHabitFab.visibility = View.INVISIBLE
+                    }
+                    is DetailMoodFragment -> {
                         binding.bottomBarNavigation.visibility = View.INVISIBLE
                         binding.bottomBar.visibility = View.INVISIBLE
                         binding.addHabitFab.visibility = View.INVISIBLE

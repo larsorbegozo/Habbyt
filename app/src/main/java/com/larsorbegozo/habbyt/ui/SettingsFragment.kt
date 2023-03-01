@@ -23,8 +23,6 @@ class SettingsFragment : Fragment() {
         )
     }
 
-    //private val navigationArgs: SettingsFragmentArgs by navArgs()
-
     private lateinit var habit: Habit
 
     private var _binding: FragmentSettingsBinding? = null
