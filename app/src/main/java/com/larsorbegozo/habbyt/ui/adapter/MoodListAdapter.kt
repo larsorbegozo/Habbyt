@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.habbyt.databinding.ListItemMoodBinding
+import com.larsorbegozo.habbyt.databinding.ListItemMoodBinding
 import com.larsorbegozo.habbyt.model.Mood
 
 class MoodListAdapter(private val listener: OnItemClickListener) : ListAdapter<Mood, MoodListAdapter.MoodViewHolder>(DiffCallback) {
@@ -23,8 +23,11 @@ class MoodListAdapter(private val listener: OnItemClickListener) : ListAdapter<M
         }
 
         fun bind(mood: Mood) {
-            binding.moodTitle.text = mood.title
-            binding.moodText.text = mood.text
+            binding.apply {
+                moodTitle.text = mood.title
+                moodText.text = mood.text
+                moodDate.text = mood.date
+            }
         }
     }
 

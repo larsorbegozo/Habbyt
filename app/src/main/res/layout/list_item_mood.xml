@@ -38,6 +38,17 @@
             tools:text="50kg in Bench Press"/>
 
         <TextView
+            android:id="@+id/mood_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:textSize="12sp"
+            app:layout_constraintTop_toTopOf="@id/mood_title"
+            app:layout_constraintBottom_toBottomOf="@id/mood_title"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:text="17/02/2023"/>
+
+        <TextView
             android:id="@+id/mood_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -7,8 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
-import com.example.habbyt.R
-import com.example.habbyt.databinding.FragmentSettingsBinding
+import com.larsorbegozo.habbyt.R
+import com.larsorbegozo.habbyt.databinding.FragmentSettingsBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.larsorbegozo.habbyt.BaseApplication
 import com.larsorbegozo.habbyt.model.Habit

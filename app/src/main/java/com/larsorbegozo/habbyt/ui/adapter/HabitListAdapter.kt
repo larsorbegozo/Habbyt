@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.habbyt.databinding.ListItemHabitBinding
+import com.larsorbegozo.habbyt.databinding.ListItemHabitBinding
 import com.larsorbegozo.habbyt.model.Habit
 
 class HabitListAdapter(private val listener: OnItemClickListener) : ListAdapter<Habit, HabitListAdapter.HabitViewHolder>(DiffCallback){

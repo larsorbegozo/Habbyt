@@ -7,9 +7,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.fragment.navArgs
-import com.example.habbyt.R
-import com.example.habbyt.databinding.FragmentAchievementBinding
+import com.larsorbegozo.habbyt.R
+import com.larsorbegozo.habbyt.databinding.FragmentAchievementBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.larsorbegozo.habbyt.BaseApplication
 import com.larsorbegozo.habbyt.model.Habit

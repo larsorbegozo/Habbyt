@@ -5,25 +5,18 @@ import android.os.Bundle
 import android.transition.Slide
 import android.transition.TransitionManager
 import android.view.Gravity
-import android.view.Menu
 import android.view.View
-import androidx.activity.viewModels
-import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI.setupWithNavController
-import androidx.room.util.query
-import com.example.habbyt.R
-import com.example.habbyt.databinding.ActivityMainBinding
+import com.larsorbegozo.habbyt.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.larsorbegozo.habbyt.ui.AddEditHabitFragment
 import com.larsorbegozo.habbyt.ui.AddEditMoodFragment
 import com.larsorbegozo.habbyt.ui.DetailHabitFragment
 import com.larsorbegozo.habbyt.ui.DetailMoodFragment
-import com.larsorbegozo.habbyt.ui.adapter.HabitListAdapter
-import com.larsorbegozo.habbyt.ui.viewmodel.HabitViewModel
 
 class MainActivity : AppCompatActivity() {
 

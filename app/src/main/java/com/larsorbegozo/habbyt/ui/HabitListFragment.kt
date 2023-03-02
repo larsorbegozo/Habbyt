@@ -3,15 +3,14 @@ package com.larsorbegozo.habbyt.ui
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.habbyt.R
-import com.example.habbyt.databinding.FragmentHabitListBinding
+import com.larsorbegozo.habbyt.R
+import com.larsorbegozo.habbyt.databinding.FragmentHabitListBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.larsorbegozo.habbyt.BaseApplication
 import com.larsorbegozo.habbyt.model.Habit

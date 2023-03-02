@@ -8,12 +8,15 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.example.habbyt.R
-import com.example.habbyt.databinding.FragmentAddEditMoodBinding
+import com.larsorbegozo.habbyt.R
+import com.larsorbegozo.habbyt.databinding.FragmentAddEditMoodBinding
 import com.larsorbegozo.habbyt.BaseApplication
 import com.larsorbegozo.habbyt.model.Mood
 import com.larsorbegozo.habbyt.ui.viewmodel.HabitViewModelFactory
 import com.larsorbegozo.habbyt.ui.viewmodel.MoodViewModel
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.time.format.FormatStyle
 
 class AddEditMoodFragment : Fragment() {
 
@@ -75,7 +78,12 @@ class AddEditMoodFragment : Fragment() {
     }
 
     private fun addMood(title: String, text: String) {
-        viewModel.addMood(title, text, "hardcoded date")
+        // Date formatting
+        val currentDate = LocalDateTime.now()
+        val formatter = DateTimeFormatter.ISO_LOCAL_DATE
+        val formatted = currentDate.format(formatter).toString()
+
+        viewModel.addMood(title, text, formatted)
         findNavController().navigate(R.id.action_addEditMoodFragment_to_moodFragment)
     }
 
@@ -84,7 +92,7 @@ class AddEditMoodFragment : Fragment() {
             navigationArgs.id,
             binding?.noteTitleInput?.text.toString(),
             binding?.noteTextInput?.text.toString(),
-            "hardcoded date"
+            mood.date
         )
         val action = AddEditMoodFragmentDirections.actionAddEditMoodFragmentToMoodFragment()
         findNavController().navigate(action)

@@ -7,10 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import com.example.habbyt.databinding.FragmentDetailMoodBinding
+import com.larsorbegozo.habbyt.databinding.FragmentDetailMoodBinding
 import androidx.navigation.fragment.navArgs
 import com.larsorbegozo.habbyt.BaseApplication
-import com.larsorbegozo.habbyt.model.Habit
 import com.larsorbegozo.habbyt.model.Mood
 import com.larsorbegozo.habbyt.ui.viewmodel.MoodViewModel
 import com.larsorbegozo.habbyt.ui.viewmodel.MoodViewModelFactory

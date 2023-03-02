@@ -19,10 +19,6 @@ class HabitViewModel(private val habitDao: HabitDao) : ViewModel() {
         return habitDao.getHabit(id).asLiveData()
     }
 
-    fun searchDatabase(searchQuery: String): LiveData<List<Habit>> {
-        return habitDao.searchDatabase(searchQuery).asLiveData()
-    }
-
     fun addHabit(
         name: String,
         status: Boolean,

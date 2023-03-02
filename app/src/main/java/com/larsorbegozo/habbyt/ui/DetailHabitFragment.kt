@@ -8,8 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.example.habbyt.R
-import com.example.habbyt.databinding.FragmentDetailHabitBinding
+import com.larsorbegozo.habbyt.R
+import com.larsorbegozo.habbyt.databinding.FragmentDetailHabitBinding
 import com.larsorbegozo.habbyt.BaseApplication
 import com.larsorbegozo.habbyt.model.Habit
 import com.larsorbegozo.habbyt.ui.viewmodel.HabitViewModel

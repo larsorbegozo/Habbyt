@@ -5,16 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.habbyt.R
-import com.example.habbyt.databinding.FragmentMoodBinding
+import com.larsorbegozo.habbyt.R
+import com.larsorbegozo.habbyt.databinding.FragmentMoodBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.larsorbegozo.habbyt.BaseApplication
-import com.larsorbegozo.habbyt.model.Habit
 import com.larsorbegozo.habbyt.model.Mood
 import com.larsorbegozo.habbyt.ui.adapter.MoodListAdapter
 import com.larsorbegozo.habbyt.ui.viewmodel.MoodViewModel
@@ -77,7 +75,4 @@ class MoodListFragment : Fragment(), MoodListAdapter.OnItemClickListener {
     override fun onItemClick(mood: Mood) {
         viewModel.onMoodSelected(mood)
     }
-
-
-
 }
