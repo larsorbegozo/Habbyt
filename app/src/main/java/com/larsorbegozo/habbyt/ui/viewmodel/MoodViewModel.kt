@@ -4,9 +4,11 @@ import androidx.lifecycle.*
 import com.larsorbegozo.habbyt.data.mood.MoodDao
 import com.larsorbegozo.habbyt.model.Mood
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 class MoodViewModel (private val moodDao: MoodDao) : ViewModel() {
 
@@ -17,6 +19,10 @@ class MoodViewModel (private val moodDao: MoodDao) : ViewModel() {
 
     fun getMood(id: Long): LiveData<Mood> {
         return moodDao.getMood(id).asLiveData()
+    }
+
+    fun getTotalNotes(): LiveData<Int> {
+        return moodDao.getTotalNotes().asLiveData()
     }
 
     fun addMood(

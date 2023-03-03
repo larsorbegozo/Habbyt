@@ -9,6 +9,8 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.Recycler
 import com.larsorbegozo.habbyt.R
 import com.larsorbegozo.habbyt.databinding.FragmentMoodBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -55,9 +57,13 @@ class MoodListFragment : Fragment(), MoodListAdapter.OnItemClickListener {
             findNavController().navigate(R.id.action_moodFragment_to_addEditMoodFragment)
         }
 
+
         binding?.apply {
             recyclerViewMood.adapter = adapter
             recyclerViewMood.layoutManager = LinearLayoutManager(context)
+            viewModel.getTotalNotes().observe(viewLifecycleOwner) {
+                itemCount.text = it.toString()
+            }
         }
 
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
