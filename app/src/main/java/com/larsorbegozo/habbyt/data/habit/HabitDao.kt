@@ -13,10 +13,6 @@ interface HabitDao {
     @Query("SELECT * FROM habit WHERE id = :id")
     fun getHabit(id: Long): Flow<Habit>
 
-    // TODO
-    @Query("SELECT * FROM habit WHERE name LIKE :searchQuery")
-    fun searchDatabase(searchQuery: String): Flow<List<Habit>>
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(habit: Habit)
 

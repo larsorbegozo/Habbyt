@@ -9,7 +9,9 @@ import com.larsorbegozo.habbyt.databinding.ListItemMoodBinding
 import com.larsorbegozo.habbyt.model.Mood
 
 class MoodListAdapter(private val listener: OnItemClickListener) : ListAdapter<Mood, MoodListAdapter.MoodViewHolder>(DiffCallback) {
+
     inner class MoodViewHolder(private var binding: ListItemMoodBinding) : RecyclerView.ViewHolder(binding.root) {
+
         init {
             binding.apply {
                 root.setOnClickListener {
