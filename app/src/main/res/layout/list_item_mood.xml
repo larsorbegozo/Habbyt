@@ -37,6 +37,7 @@
             app:layout_constraintLeft_toRightOf="@id/emoji"
             tools:text="50kg in Bench Press"/>
 
+        <!--TODO: Add hh:mm format to mood_date-->
         <TextView
             android:id="@+id/mood_date"
             android:layout_width="wrap_content"

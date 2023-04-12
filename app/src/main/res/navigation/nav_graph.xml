@@ -7,8 +7,7 @@
 
     <fragment
         android:id="@+id/habitListFragment"
-        android:name="com.larsorbegozo.habbyt.ui.HabitListFragment"
-        android:label="Habit List">
+        android:name="com.larsorbegozo.habbyt.ui.habits.HabitListFragment">
         <action
             android:id="@+id/action_habitListFragment_to_addEditHabitFragment"
             app:destination="@id/addEditHabitFragment" />
@@ -27,8 +26,7 @@
     </fragment>
     <fragment
         android:id="@+id/addEditHabitFragment"
-        android:name="com.larsorbegozo.habbyt.ui.AddEditHabitFragment"
-        android:label="Add Habit"
+        android:name="com.larsorbegozo.habbyt.ui.habits.AddEditHabitFragment"
         tools:layout="@layout/fragment_add_edit_habit">
         <argument
             android:name="id"
@@ -40,11 +38,13 @@
         <action
             android:id="@+id/action_addEditHabitFragment_to_detailHabitFragment"
             app:destination="@id/detailHabitFragment" />
+        <action
+            android:id="@+id/action_addEditHabitFragment_to_iconSelectSheetFragment"
+            app:destination="@id/iconSelectSheetFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailHabitFragment"
-        android:name="com.larsorbegozo.habbyt.ui.DetailHabitFragment"
-        android:label="Habit Details"
+        android:name="com.larsorbegozo.habbyt.ui.habits.DetailHabitFragment"
         tools:layout="@layout/fragment_detail_habit">
         <action
             android:id="@+id/action_detailHabitFragment_to_addEditHabitFragment"
@@ -64,9 +64,8 @@
         tools:layout="@layout/fragment_achievement" />
     <fragment
         android:id="@+id/moodFragment"
-        android:name="com.larsorbegozo.habbyt.ui.MoodListFragment"
-        android:label="fragment_mood"
-        tools:layout="@layout/fragment_mood" >
+        android:name="com.larsorbegozo.habbyt.ui.mood.MoodListFragment"
+        tools:layout="@layout/fragment_mood">
         <action
             android:id="@+id/action_moodFragment_to_detailMoodFragment"
             app:destination="@id/detailMoodFragment" />
@@ -81,28 +80,31 @@
         tools:layout="@layout/fragment_settings" />
     <fragment
         android:id="@+id/addEditMoodFragment"
-        android:name="com.larsorbegozo.habbyt.ui.AddEditMoodFragment"
-        android:label="fragment_add_edit_mood"
-        tools:layout="@layout/fragment_add_edit_mood" >
+        android:name="com.larsorbegozo.habbyt.ui.mood.AddEditMoodFragment"
+        tools:layout="@layout/fragment_add_edit_mood">
         <argument
             android:name="id"
-            app:argType="long"
-            android:defaultValue="0L" />
+            android:defaultValue="0L"
+            app:argType="long" />
         <action
             android:id="@+id/action_addEditMoodFragment_to_moodFragment"
             app:destination="@id/moodFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailMoodFragment"
-        android:name="com.larsorbegozo.habbyt.ui.DetailMoodFragment"
-        android:label="fragment_detail_mood"
-        tools:layout="@layout/fragment_detail_mood" >
+        android:name="com.larsorbegozo.habbyt.ui.mood.DetailMoodFragment"
+        tools:layout="@layout/fragment_detail_mood">
         <action
             android:id="@+id/action_detailMoodFragment_to_addEditMoodFragment"
             app:destination="@id/addEditMoodFragment" />
         <argument
             android:name="id"
-            app:argType="long"
-            android:defaultValue="0L" />
+            android:defaultValue="0L"
+            app:argType="long" />
     </fragment>
+    <fragment
+        android:id="@+id/iconSelectSheetFragment"
+        android:name="com.larsorbegozo.habbyt.ui.IconSelectSheetFragment"
+        android:label="fragment_icon_select_sheet"
+        tools:layout="@layout/fragment_icon_select_sheet" />
 </navigation>

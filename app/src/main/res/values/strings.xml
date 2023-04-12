@@ -1,7 +1,21 @@
 <resources>
-    <string name="app_name">Habbyt</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="detail_fragment">Habit Detail</string>
-    <string name="add_fragment">Add Habit</string>
-    <string name="list_fragment">Habit List</string>
+    <string name="app_name" translatable="false">Habbyt</string>
+    <string name="list_fragment_topbar_title">Habit List</string>
+    <string name="add_habit_topbar_title">Add Habit</string>
+    <string name="edit_habit_topbar_title">Edit Habit</string>
+    <string name="detail_habit_topbar_title">Habit Details</string>
+    <string name="habit_name_hint">Habit name *</string>
+    <string name="habit_description_hint">Habit description</string>
+    <string name="habit_unit_hint">Unit *</string>
+    <string name="habit_goal_hint">Goal *</string>
+    <string name="save_button">Save</string>
+    <string name="delete_button">Delete</string>
+    <string name="mood_note_title_hint">Note Title *</string>
+    <string name="mood_note_text_hint">Note Text *</string>
+    <string name="habit_detail_description">Description:</string>
+    <string name="habit_detail_frequency">Frequency:</string>
+    <string name="habit_detail_goal">Goal:</string>
+    <string name="habit_detail_unit">Unit:</string>
+    <string name="mood_note_title">Note Title:</string>
+    <string name="total_notes">"Total notes: "</string>
 </resources>

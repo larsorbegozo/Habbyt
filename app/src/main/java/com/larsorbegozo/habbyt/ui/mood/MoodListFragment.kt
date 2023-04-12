@@ -1,4 +1,4 @@
-package com.larsorbegozo.habbyt.ui
+package com.larsorbegozo.habbyt.ui.mood
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,16 +9,14 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.Recycler
 import com.larsorbegozo.habbyt.R
 import com.larsorbegozo.habbyt.databinding.FragmentMoodBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.larsorbegozo.habbyt.BaseApplication
 import com.larsorbegozo.habbyt.model.Mood
 import com.larsorbegozo.habbyt.ui.adapter.MoodListAdapter
-import com.larsorbegozo.habbyt.ui.viewmodel.MoodViewModel
-import com.larsorbegozo.habbyt.ui.viewmodel.MoodViewModelFactory
+import com.larsorbegozo.habbyt.viewmodel.MoodViewModel
+import com.larsorbegozo.habbyt.viewmodel.MoodViewModelFactory
 
 
 class MoodListFragment : Fragment(), MoodListAdapter.OnItemClickListener {
@@ -70,7 +68,8 @@ class MoodListFragment : Fragment(), MoodListAdapter.OnItemClickListener {
             viewModel.moodEvent.collect() { event ->
                 when(event) {
                     is MoodViewModel.MoodEvent.NavigateToDetailMoodScreen -> {
-                        val action = MoodListFragmentDirections.actionMoodFragmentToDetailMoodFragment(event.mood.id)
+                        val action =
+                            MoodListFragmentDirections.actionMoodFragmentToDetailMoodFragment(event.mood.id)
                         findNavController().navigate(action)
                     }
                 }

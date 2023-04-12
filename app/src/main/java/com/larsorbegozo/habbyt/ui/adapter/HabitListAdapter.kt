@@ -1,12 +1,15 @@
 package com.larsorbegozo.habbyt.ui.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.larsorbegozo.habbyt.R
 import com.larsorbegozo.habbyt.databinding.ListItemHabitBinding
 import com.larsorbegozo.habbyt.model.Habit
+import com.larsorbegozo.habbyt.model.IconsProvider
 
 class HabitListAdapter(private val listener: OnItemClickListener) : ListAdapter<Habit, HabitListAdapter.HabitViewHolder>(DiffCallback){
 
@@ -34,6 +37,7 @@ class HabitListAdapter(private val listener: OnItemClickListener) : ListAdapter<
         fun bind(habit: Habit) {
             binding.habitName.text = habit.name
             binding.checkbox.isChecked = habit.status
+            binding.habitIcon.setImageResource(IconsProvider.habitIconLists[habit.image].image)
         }
     }
 

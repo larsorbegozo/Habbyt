@@ -1,10 +1,12 @@
-package com.larsorbegozo.habbyt.ui
+package com.larsorbegozo.habbyt.ui.habits
 
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -15,8 +17,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.larsorbegozo.habbyt.BaseApplication
 import com.larsorbegozo.habbyt.model.Habit
 import com.larsorbegozo.habbyt.ui.adapter.HabitListAdapter
-import com.larsorbegozo.habbyt.ui.viewmodel.HabitViewModel
-import com.larsorbegozo.habbyt.ui.viewmodel.HabitViewModelFactory
+import com.larsorbegozo.habbyt.viewmodel.HabitViewModel
+import com.larsorbegozo.habbyt.viewmodel.HabitViewModelFactory
 
 class HabitListFragment : Fragment(), HabitListAdapter.OnItemClickListener {
 
@@ -29,6 +31,7 @@ class HabitListFragment : Fragment(), HabitListAdapter.OnItemClickListener {
     private var _binding: FragmentHabitListBinding? = null
     private val binding get() = _binding!!
 
+    
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -57,14 +60,17 @@ class HabitListFragment : Fragment(), HabitListAdapter.OnItemClickListener {
         binding.apply {
             recyclerViewHabit.adapter = adapter
             recyclerViewHabit.layoutManager = LinearLayoutManager(context)
-            topBar.setTitle(R.string.list_fragment)
+            topBar.setTitle(R.string.list_fragment_topbar_title)
         }
-
+        
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
             viewModel.habitEvent.collect() { event ->
                 when(event) {
                     is HabitViewModel.HabitEvent.NavigateToDetailHabitScreen -> {
-                        val action = HabitListFragmentDirections.actionHabitListFragmentToDetailHabitFragment(event.habit.id)
+                        val action =
+                            HabitListFragmentDirections.actionHabitListFragmentToDetailHabitFragment(
+                                event.habit.id
+                            )
                         findNavController().navigate(action)
                     }
                 }

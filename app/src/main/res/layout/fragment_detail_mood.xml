@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.larsorbegozo.habbyt.ui.DetailMoodFragment">
+    tools:context="com.larsorbegozo.habbyt.ui.mood.DetailMoodFragment">
 
     <TextView
         android:id="@+id/title_title"
@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:textSize="24sp"
-        android:text="Note Title: "
+        android:text="@string/mood_note_title"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"/>
 

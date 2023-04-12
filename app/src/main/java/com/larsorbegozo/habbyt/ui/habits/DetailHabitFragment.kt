@@ -1,4 +1,4 @@
-package com.larsorbegozo.habbyt.ui
+package com.larsorbegozo.habbyt.ui.habits
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,8 +12,10 @@ import com.larsorbegozo.habbyt.R
 import com.larsorbegozo.habbyt.databinding.FragmentDetailHabitBinding
 import com.larsorbegozo.habbyt.BaseApplication
 import com.larsorbegozo.habbyt.model.Habit
-import com.larsorbegozo.habbyt.ui.viewmodel.HabitViewModel
-import com.larsorbegozo.habbyt.ui.viewmodel.HabitViewModelFactory
+import com.larsorbegozo.habbyt.model.HabitIcon
+import com.larsorbegozo.habbyt.model.IconsProvider
+import com.larsorbegozo.habbyt.viewmodel.HabitViewModel
+import com.larsorbegozo.habbyt.viewmodel.HabitViewModelFactory
 
 
 class DetailHabitFragment : Fragment() {
@@ -52,6 +54,7 @@ class DetailHabitFragment : Fragment() {
 
         // Bind toolbar
         binding.apply {
+            topBar.title = R.string.detail_habit_topbar_title.toString() // TODO: Fix
             topBar.inflateMenu(R.menu.top_bar_detail_menu)
             topBar.setNavigationIcon(R.drawable.arrow_back)
             topBar.setNavigationOnClickListener {
@@ -61,11 +64,20 @@ class DetailHabitFragment : Fragment() {
     }
 
     private fun bindHabit() {
-        binding.topBar.title = "Habit Details"
-        binding.habitName.text = habit.name
-        binding.editHabitFab.setOnClickListener {
-            val action = DetailHabitFragmentDirections.actionDetailHabitFragmentToAddEditHabitFragment(habit.id)
-            findNavController().navigate(action)
+        binding.apply {
+            habitName.text = habit.name
+            habitImage.setImageResource(IconsProvider.habitIconLists[habit.image].image)
+            habitDescription.text = habit.description
+            habitFrequency.text = "FREQUENCY" // TODO: Hardcoded text
+            habitGoal.text = habit.goal.toString()
+            habitUnit.text = habit.unit
+            editHabitFab.setOnClickListener {
+                val action =
+                    DetailHabitFragmentDirections.actionDetailHabitFragmentToAddEditHabitFragment(
+                        habit.id
+                    )
+                findNavController().navigate(action)
+            }
         }
     }
 }

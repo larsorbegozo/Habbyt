@@ -1,4 +1,4 @@
-package com.larsorbegozo.habbyt.ui
+package com.larsorbegozo.habbyt.ui.mood
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -11,8 +11,8 @@ import com.larsorbegozo.habbyt.databinding.FragmentDetailMoodBinding
 import androidx.navigation.fragment.navArgs
 import com.larsorbegozo.habbyt.BaseApplication
 import com.larsorbegozo.habbyt.model.Mood
-import com.larsorbegozo.habbyt.ui.viewmodel.MoodViewModel
-import com.larsorbegozo.habbyt.ui.viewmodel.MoodViewModelFactory
+import com.larsorbegozo.habbyt.viewmodel.MoodViewModel
+import com.larsorbegozo.habbyt.viewmodel.MoodViewModelFactory
 
 
 class DetailMoodFragment : Fragment() {
@@ -55,7 +55,8 @@ class DetailMoodFragment : Fragment() {
             noteTitle.text = mood.title
             noteText.text = mood.text
             fabAddMood.setOnClickListener {
-                val action = DetailMoodFragmentDirections.actionDetailMoodFragmentToAddEditMoodFragment(mood.id)
+                val action =
+                    DetailMoodFragmentDirections.actionDetailMoodFragmentToAddEditMoodFragment(mood.id)
                 findNavController().navigate(action)
             }
         }

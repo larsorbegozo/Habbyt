@@ -3,11 +3,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.larsorbegozo.habbyt.ui.AddEditMoodFragment">
+    tools:context="com.larsorbegozo.habbyt.ui.mood.AddEditMoodFragment">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/note_title_layout"
-        android:hint="Note Title *"
+        android:hint="@string/mood_note_title_hint"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -27,7 +27,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/note_text_layout"
-        android:hint="Note Text *"
+        android:hint="@string/mood_note_text_hint"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -54,7 +54,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="64dp"
-        android:text="SAVE"
+        android:text="@string/save_button"
         android:textColor="@color/orange_200"
         android:backgroundTint="@color/red_700"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -70,11 +70,9 @@
         android:layout_marginRight="64dp"
         android:textColor="@color/orange_200"
         android:backgroundTint="@color/red_700"
-        android:text="Delete"
+        android:text="@string/delete_button"
         android:visibility="gone"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/save_action" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

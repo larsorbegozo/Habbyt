@@ -1,4 +1,4 @@
-package com.larsorbegozo.habbyt.ui.viewmodel
+package com.larsorbegozo.habbyt.viewmodel
 
 import androidx.lifecycle.*
 import com.larsorbegozo.habbyt.data.mood.MoodDao

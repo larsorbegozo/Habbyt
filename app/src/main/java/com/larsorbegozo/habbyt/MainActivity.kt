@@ -13,10 +13,10 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI.setupWithNavController
 import com.larsorbegozo.habbyt.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.larsorbegozo.habbyt.ui.AddEditHabitFragment
-import com.larsorbegozo.habbyt.ui.AddEditMoodFragment
-import com.larsorbegozo.habbyt.ui.DetailHabitFragment
-import com.larsorbegozo.habbyt.ui.DetailMoodFragment
+import com.larsorbegozo.habbyt.ui.habits.AddEditHabitFragment
+import com.larsorbegozo.habbyt.ui.mood.AddEditMoodFragment
+import com.larsorbegozo.habbyt.ui.habits.DetailHabitFragment
+import com.larsorbegozo.habbyt.ui.mood.DetailMoodFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -48,6 +48,7 @@ class MainActivity : AppCompatActivity() {
         // Hide bottomNavigationView, FAB & BottomAppBar when necessary
         supportFragmentManager.registerFragmentLifecycleCallbacks(object : FragmentManager.FragmentLifecycleCallbacks() {
             override fun onFragmentViewCreated(fm: FragmentManager, f: Fragment, v: View, savedInstanceState: Bundle?) {
+                // This is used for the transition TODO: Investigate
                 TransitionManager.beginDelayedTransition(binding.root, Slide(Gravity.BOTTOM).excludeTarget(R.id.nav_host_fragment, true))
                 when (f) {
                     is AddEditHabitFragment -> {

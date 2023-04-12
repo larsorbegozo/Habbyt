@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="list_fragment_topbar_title">Lista de Hábitos</string>
+    <string name="add_habit_topbar_title">Añadir Hábito</string>
+    <string name="edit_habit_topbar_title">Editar Hábito</string>
+    <string name="detail_habit_topbar_title">Detalles del Hábito</string>
+    <string name="habit_name_hint">Nombre *</string>
+    <string name="habit_description_hint">Descripción</string>
+    <string name="habit_unit_hint">Unidad *</string>
+    <string name="habit_goal_hint">Objetivo *</string>
+    <string name="save_button">Guardar</string>
+    <string name="delete_button">Eliminar</string>
+    <string name="mood_note_title_hint">Título *</string>
+    <string name="mood_note_text_hint">Texto *</string>
+    <string name="habit_detail_description">Descripción:</string>
+    <string name="habit_detail_frequency">Frecuencia:</string>
+    <string name="habit_detail_goal">Objetivo:</string>
+    <string name="habit_detail_unit">Unidad:</string>
+    <string name="mood_note_title">Título:</string>
+    <string name="total_notes">"Total de notas: "</string>
+</resources>

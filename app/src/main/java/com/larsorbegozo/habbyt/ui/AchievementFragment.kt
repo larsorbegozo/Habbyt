@@ -12,8 +12,8 @@ import com.larsorbegozo.habbyt.databinding.FragmentAchievementBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.larsorbegozo.habbyt.BaseApplication
 import com.larsorbegozo.habbyt.model.Habit
-import com.larsorbegozo.habbyt.ui.viewmodel.HabitViewModel
-import com.larsorbegozo.habbyt.ui.viewmodel.HabitViewModelFactory
+import com.larsorbegozo.habbyt.viewmodel.HabitViewModel
+import com.larsorbegozo.habbyt.viewmodel.HabitViewModelFactory
 
 
 class AchievementFragment : Fragment() {

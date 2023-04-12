@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.larsorbegozo.habbyt.ui.MoodListFragment">
+    tools:context="com.larsorbegozo.habbyt.ui.mood.MoodListFragment">
 
     <TextView
         android:id="@+id/item_count_title"
@@ -12,7 +12,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/divider"
         app:layout_constraintRight_toLeftOf="@id/item_count"
-        android:text="Total notes: "/>
+        android:text="@string/total_notes"/>
+
 
     <TextView
         android:id="@+id/item_count"

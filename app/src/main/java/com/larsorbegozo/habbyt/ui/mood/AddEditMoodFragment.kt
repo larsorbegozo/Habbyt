@@ -1,4 +1,4 @@
-package com.larsorbegozo.habbyt.ui
+package com.larsorbegozo.habbyt.ui.mood
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -12,11 +12,10 @@ import com.larsorbegozo.habbyt.R
 import com.larsorbegozo.habbyt.databinding.FragmentAddEditMoodBinding
 import com.larsorbegozo.habbyt.BaseApplication
 import com.larsorbegozo.habbyt.model.Mood
-import com.larsorbegozo.habbyt.ui.viewmodel.HabitViewModelFactory
-import com.larsorbegozo.habbyt.ui.viewmodel.MoodViewModel
+import com.larsorbegozo.habbyt.viewmodel.HabitViewModelFactory
+import com.larsorbegozo.habbyt.viewmodel.MoodViewModel
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
-import java.time.format.FormatStyle
 
 class AddEditMoodFragment : Fragment() {
 

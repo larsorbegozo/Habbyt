@@ -1,4 +1,4 @@
-package com.larsorbegozo.habbyt.ui
+package com.larsorbegozo.habbyt.ui.habits
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,16 +8,18 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.larsorbegozo.habbyt.R
-import com.larsorbegozo.habbyt.databinding.FragmentAddEditHabitBinding
 import com.larsorbegozo.habbyt.BaseApplication
+import com.larsorbegozo.habbyt.databinding.FragmentAddEditHabitBinding
 import com.larsorbegozo.habbyt.model.Habit
-import com.larsorbegozo.habbyt.ui.viewmodel.HabitViewModel
-import com.larsorbegozo.habbyt.ui.viewmodel.HabitViewModelFactory
+import com.larsorbegozo.habbyt.model.IconsProvider
+import com.larsorbegozo.habbyt.ui.IconSelectSheetFragment
+import com.larsorbegozo.habbyt.viewmodel.HabitViewModel
+import com.larsorbegozo.habbyt.viewmodel.HabitViewModelFactory
 
 class AddEditHabitFragment : Fragment() {
-
-    private val viewModel: HabitViewModel by activityViewModels() {
+    private val viewModel: HabitViewModel by activityViewModels {
         HabitViewModelFactory(
             (activity?.application as BaseApplication).habitDatabase.HabitDao()
         )
@@ -26,6 +28,7 @@ class AddEditHabitFragment : Fragment() {
     private val navigationArgs: AddEditHabitFragmentArgs by navArgs()
 
     private lateinit var habit: Habit
+    private lateinit var materialAlertDialog: MaterialAlertDialogBuilder
 
     private var _binding: FragmentAddEditHabitBinding? = null
     private val binding get() = _binding
@@ -41,7 +44,6 @@ class AddEditHabitFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
 
         val id = navigationArgs.id
         if(id > 0) {
@@ -59,9 +61,17 @@ class AddEditHabitFragment : Fragment() {
             // ADD HABIT
             binding?.saveAction?.setOnClickListener {
                 addHabit(
-                    binding!!.itemName.text.toString())
+                    binding!!.itemName.text.toString(),
+                    binding!!.itemDescription.text.toString(),
+                    viewModel.tempImageID.value!!,
+                    binding!!.itemGoal.text.toString().toInt(),
+                    binding!!.itemUnit.text.toString()
+                )
             }
-            binding?.topBar?.title = "Add Habit"
+            binding?.topBar?.title = R.string.add_habit_topbar_title.toString() // TODO: Fix
+            viewModel.tempImage.observe(this.viewLifecycleOwner) {
+                binding?.habitImage?.setImageResource(it)
+            }
         }
 
         // Bind toolbar
@@ -72,17 +82,27 @@ class AddEditHabitFragment : Fragment() {
                 findNavController().navigateUp()
             }
         }
+
+        materialAlertDialog = MaterialAlertDialogBuilder(requireContext())
+
+        binding?.habitImageCard?.setOnClickListener{
+            IconSelectSheetFragment().show(parentFragmentManager.beginTransaction(), "uwu")
+        }
     }
 
-    private fun addHabit(name: String) {
-        viewModel.addHabit(name, false) // false because the new habit doesn't need to be checked
-        findNavController().navigate(R.id.action_addEditHabitFragment_to_habitListFragment)
+    private fun addHabit(name: String, description: String, icon: Int, goal: Int, unit: String) {
+        viewModel.addHabit(name, description, icon, goal, unit, false) // false because the new habit doesn't need to be checked
+        findNavController().navigate(R.id.action_addEditHabitFragment_to_habitListFragment) // TODO: Fix: ANR when EditTexts are empty
     }
 
     private fun updateHabit() {
         viewModel.updateHabit(
             navigationArgs.id,
             binding?.itemName?.text.toString(),
+            binding?.itemDescription?.text.toString(),
+            viewModel.tempImageID.value!!,
+            binding?.itemGoal?.text.toString().toInt(),
+            binding?.itemUnit?.text.toString(),
             habit.status
         )
         val action = AddEditHabitFragmentDirections.actionAddEditHabitFragmentToHabitListFragment()
@@ -97,8 +117,12 @@ class AddEditHabitFragment : Fragment() {
     }
 
     private fun bindHabit(habit: Habit) {
-        binding?.topBar?.title = "Edit Habit"
+        binding?.topBar?.title = R.string.edit_habit_topbar_title.toString()
         binding?.itemName?.setText(habit.name)
+        binding?.itemDescription?.setText(habit.description)
+        binding?.habitImage?.setImageResource(IconsProvider.habitIconLists[habit.image].image) //TODO: when edit habit icon, it doesn't change in the preview, it does change in HabitList when apply changes
+        binding?.itemGoal?.setText(habit.goal.toString())
+        binding?.itemUnit?.setText(habit.unit)
         binding?.saveAction?.setOnClickListener {
             updateHabit()
         }
