@@ -35,12 +35,12 @@
             android:layout_gravity="center"
             tools:src="@drawable/pedal_bike"/>
         <!--TODO: Hardcoded image-->
-        <!--TODO: Image converted to a ButtonImage-->
 
     </com.google.android.material.card.MaterialCardView>
     <!--Habit image-->
 
     <!--Habit name-->
+    <!--TODO: Add error icon-->
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.Material3.TextInputEditText.FilledBox"
         android:id="@+id/item_name_label"
@@ -130,6 +130,7 @@
     <!--Habit goal-->
 
     <!--Save Button-->
+    <!--TODO: Probably is better if move it to topbar-->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/save_action"
         android:layout_width="0dp"
@@ -144,6 +145,7 @@
     <!--Save Button-->
 
     <!--Delete Button-->
+    <!--TODO: Probably is better if move it to topbar-->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/delete_habit_button"
         android:layout_width="0dp"

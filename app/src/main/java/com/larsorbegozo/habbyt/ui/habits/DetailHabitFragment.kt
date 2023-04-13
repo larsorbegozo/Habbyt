@@ -54,7 +54,7 @@ class DetailHabitFragment : Fragment() {
 
         // Bind toolbar
         binding.apply {
-            topBar.title = R.string.detail_habit_topbar_title.toString() // TODO: Fix
+            topBar.setTitle(R.string.detail_habit_topbar_title)
             topBar.inflateMenu(R.menu.top_bar_detail_menu)
             topBar.setNavigationIcon(R.drawable.arrow_back)
             topBar.setNavigationOnClickListener {

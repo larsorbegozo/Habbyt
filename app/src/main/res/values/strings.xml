@@ -18,4 +18,5 @@
     <string name="habit_detail_unit">Unit:</string>
     <string name="mood_note_title">Note Title:</string>
     <string name="total_notes">"Total notes: "</string>
+    <string name="empty_field_toast">Please, fill out all required fields</string>
 </resources>
