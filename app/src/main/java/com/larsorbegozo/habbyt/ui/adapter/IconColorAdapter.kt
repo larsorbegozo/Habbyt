@@ -37,7 +37,7 @@ class IconColorAdapter(private val habitIconColorList: List<HabitIconColor>, pri
         }
 
         fun render(iconColor: HabitIconColor) {
-            binding.imageTesting.setBackgroundColor(getColor(context, iconColor.color))
+            binding.imageTesting.setColorFilter(getColor(context, iconColor.color))
         }
     }
 

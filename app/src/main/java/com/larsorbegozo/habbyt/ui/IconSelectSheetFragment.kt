@@ -55,9 +55,9 @@ class IconSelectSheetFragment : DialogFragment(), IconsAdapter.OnItemClickListen
 
         materialAlertDialogBuilder = MaterialAlertDialogBuilder(requireContext())
 
-        materialAlertDialogBuilder //TODO: bottomNavigationBar reappear when open this
+        materialAlertDialogBuilder // TODO: bottomNavigationBar reappear when open this
             .setTitle("TITULAZO")
-            .setView(binding.root)
+            .setView(binding.root) // TODO: Add positive button to save when pressed, for better user experience
 
         return materialAlertDialogBuilder.create()
     }

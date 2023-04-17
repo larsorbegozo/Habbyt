@@ -71,8 +71,8 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
+            style="@style/habitIconStyle"
             android:src="@drawable/pedal_bike"/>
-        <!--TODO: Hardcoded image-->
 
     </com.google.android.material.card.MaterialCardView>
     <!--Habit image-->

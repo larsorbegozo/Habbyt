@@ -22,7 +22,7 @@ class HabitViewModel(private val habitDao: HabitDao) : ViewModel() {
     private var _tempImageDrawable = MutableLiveData(R.drawable.pedal_bike)
     val tempImageDrawable: LiveData<Int> = _tempImageDrawable
 
-    private var _tempImageColor = MutableLiveData(R.color.black)
+    private var _tempImageColor = MutableLiveData(R.color.icon_red)
     val tempImageColor: LiveData<Int> = _tempImageColor
 
     // Used for access with ID into the Provider
@@ -90,6 +90,11 @@ class HabitViewModel(private val habitDao: HabitDao) : ViewModel() {
         viewModelScope.launch(Dispatchers.IO) {
             habitDao.delete(habit)
         }
+    }
+
+    private fun resetTempValues() { //TODO: add this to reset values when necessary
+        _tempImageID.value = 0
+        _tempImageColorID.value = 0
     }
 
     fun onHabitSelected(habit: Habit) {

@@ -1,5 +1,6 @@
 package com.larsorbegozo.habbyt.ui.habits
 
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -65,7 +66,7 @@ class AddEditHabitFragment : Fragment() {
             }
 
             viewModel.tempImageColor.observe(this.viewLifecycleOwner) {
-                binding?.habitImage?.setColorFilter(getColor(requireContext(), it))
+                binding?.habitImageCard?.backgroundTintList = ColorStateList.valueOf(getColor(requireContext(), it))
             }
 
             // DELETE HABIT
@@ -120,7 +121,7 @@ class AddEditHabitFragment : Fragment() {
             }
 
             viewModel.tempImageColor.observe(this.viewLifecycleOwner) {
-                binding?.habitImage?.setColorFilter(getColor(requireContext(), it))
+                binding?.habitImageCard?.backgroundTintList = ColorStateList.valueOf(getColor(requireContext(), it))
             }
         }
 
@@ -172,7 +173,7 @@ class AddEditHabitFragment : Fragment() {
         binding?.itemName?.setText(habit.name)
         binding?.itemDescription?.setText(habit.description)
         binding?.habitImage?.setImageResource(IconsProvider.habitIconLists[habit.image].image)
-        binding?.habitImage?.setColorFilter(getColor(requireContext(), IconColorsProvider.habitIconColorLists[habit.color].color))
+        binding?.habitImageCard?.backgroundTintList = ColorStateList.valueOf(getColor(requireContext(), IconColorsProvider.habitIconColorLists[habit.color].color))
         binding?.itemGoal?.setText(habit.goal.toString())
         binding?.itemUnit?.setText(habit.unit)
         binding?.saveAction?.setOnClickListener {

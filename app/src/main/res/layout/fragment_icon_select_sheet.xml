@@ -17,25 +17,38 @@
             android:layout_height="wrap_content"
             android:nestedScrollingEnabled="false"
             tools:listitem="@layout/list_icon_select"
-            app:layout_constraintTop_toBottomOf="@id/recycler_view_icons_color"
+            app:layout_constraintTop_toBottomOf="@id/recycler_view_icons_color_card_view"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             android:scrollbars="horizontal"/>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view_icons_color"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/recycler_view_icons_color_card_view"
             android:layout_width="match_parent"
             android:layout_height="70dp"
-            android:nestedScrollingEnabled="false"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:orientation="horizontal"
-            tools:listitem="@layout/list_color_select"
+            android:layout_margin="4dp"
+            android:elevation="3dp"
+            android:backgroundTint="#DCDCDC"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toTopOf="@id/recycler_view_icons"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:scrollbars="vertical"/>
+            app:layout_constraintRight_toRightOf="parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_icons_color"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center|center_horizontal"
+                android:nestedScrollingEnabled="false"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:orientation="horizontal"
+                tools:listitem="@layout/list_color_select"
+                android:scrollbars="vertical"/>
+
+        </com.google.android.material.card.MaterialCardView>
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -22,7 +22,7 @@ class IconColorsProvider {
             HabitIconColor(14, "orange", R.color.icon_orange),
             HabitIconColor(15, "deep_orange", R.color.icon_deep_orange),
             HabitIconColor(16, "brown", R.color.icon_brown),
-            HabitIconColor(17, "gray", R.color.icon_gray),
+            HabitIconColor(17, "gray", R.color.icon_gray)
         )
     }
 }

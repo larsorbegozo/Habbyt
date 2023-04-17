@@ -1,5 +1,6 @@
 package com.larsorbegozo.habbyt.ui.habits
 
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -69,7 +70,7 @@ class DetailHabitFragment : Fragment() {
         binding.apply {
             habitName.text = habit.name
             habitImage.setImageResource(IconsProvider.habitIconLists[habit.image].image)
-            habitImage.setColorFilter(getColor(requireContext(), IconColorsProvider.habitIconColorLists[habit.color].color))
+            habitImageCard.backgroundTintList = ColorStateList.valueOf(getColor(requireContext(), IconColorsProvider.habitIconColorLists[habit.color].color))
             habitDescription.text = habit.description
             habitFrequency.text = "FREQUENCY" // TODO: Hardcoded text
             habitGoal.text = habit.goal.toString()

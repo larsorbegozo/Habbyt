@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/image_testing"
-    android:layout_width="40dp"
-    android:layout_height="40dp"
-    android:background="@color/red_300">
+    android:layout_width="45dp"
+    android:layout_height="45dp"
+    android:layout_margin="4dp"
+    android:src="@drawable/circle">
 </ImageView>

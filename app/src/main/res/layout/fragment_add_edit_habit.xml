@@ -33,14 +33,13 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
+            style="@style/habitIconStyle"
             tools:src="@drawable/pedal_bike"/>
-        <!--TODO: Hardcoded image-->
 
     </com.google.android.material.card.MaterialCardView>
     <!--Habit image-->
 
     <!--Habit name-->
-    <!--TODO: Add error icon-->
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.Material3.TextInputEditText.FilledBox"
         android:id="@+id/item_name_label"

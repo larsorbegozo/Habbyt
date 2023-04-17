@@ -1,6 +1,7 @@
 package com.larsorbegozo.habbyt.ui.adapter
 
 import android.content.Context
+import android.content.res.ColorStateList
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat.getColor
@@ -40,7 +41,7 @@ class HabitListAdapter(private val listener: OnItemClickListener, private val co
             binding.habitName.text = habit.name
             binding.checkbox.isChecked = habit.status
             binding.habitIcon.setImageResource(IconsProvider.habitIconLists[habit.image].image)
-            binding.habitIcon.setColorFilter(getColor(context, IconColorsProvider.habitIconColorLists[habit.color].color))
+            binding.cardView.backgroundTintList = ColorStateList.valueOf(getColor(context, IconColorsProvider.habitIconColorLists[habit.color].color))
         }
     }
 
