@@ -7,7 +7,8 @@ class IconsProvider {
         val habitIconLists: List<HabitIcon> = listOf(
             HabitIcon(0, "pedal_bike", R.drawable.pedal_bike),
             HabitIcon(1, "arrow_back", R.drawable.arrow_back),
-            HabitIcon(2, "mood_icon", R.drawable.mood_icon)
+            HabitIcon(2, "mood_icon", R.drawable.mood_icon),
+            HabitIcon(3, "star_icon", R.drawable.achievements_icon)
         )
     }
 }

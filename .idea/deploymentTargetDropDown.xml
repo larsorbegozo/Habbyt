@@ -7,19 +7,37 @@
         <deviceKey>
           <Key>
             <type value="VIRTUAL_DEVICE_PATH" />
-            <value value="D:\Lau\Android\.android\avd\Pixel_6_Pro_API_33.avd" />
+            <value value="D:\Lau\Android\Emulators\Pixel_6_Pro_API_33.avd" />
           </Key>
         </deviceKey>
       </Target>
     </targetSelectedWithDropDown>
-    <timeTargetWasSelectedWithDropDown value="2023-04-13T15:44:41.654832500Z" />
+    <timeTargetWasSelectedWithDropDown value="2023-04-17T14:07:28.179592900Z" />
     <targetsSelectedWithDialog>
       <Target>
         <type value="QUICK_BOOT_TARGET" />
         <deviceKey>
           <Key>
             <type value="VIRTUAL_DEVICE_PATH" />
-            <value value="D:\Lau\Android\.android\avd\Pixel_6_Pro_API_33.avd" />
+            <value value="D:\Lau\Android\Emulators\Nexus_7_API_UpsideDownCake_7-inch.avd" />
+          </Key>
+        </deviceKey>
+      </Target>
+      <Target>
+        <type value="QUICK_BOOT_TARGET" />
+        <deviceKey>
+          <Key>
+            <type value="VIRTUAL_DEVICE_PATH" />
+            <value value="D:\Lau\Android\Emulators\Nexus_7_API_33_7-inch.avd" />
+          </Key>
+        </deviceKey>
+      </Target>
+      <Target>
+        <type value="QUICK_BOOT_TARGET" />
+        <deviceKey>
+          <Key>
+            <type value="VIRTUAL_DEVICE_PATH" />
+            <value value="D:\Lau\Android\Emulators\Nexus_7_API_26_7-inch.avd" />
           </Key>
         </deviceKey>
       </Target>

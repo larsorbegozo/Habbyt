@@ -39,7 +39,6 @@ class IconsAdapter(private val habitIconList: List<HabitIcon>, private val liste
                     if(position != RecyclerView.NO_POSITION) {
                         val habitIconPosition = habitIconList[position]
                         listener.onIconClicked(habitIconPosition)
-                        Toast.makeText(itemView.context, "${habitIconPosition.name}", Toast.LENGTH_SHORT).show()
                         dialog.dismiss()
                     }
                 }

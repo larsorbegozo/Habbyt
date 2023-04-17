@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat.getColor
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -13,6 +14,7 @@ import com.larsorbegozo.habbyt.databinding.FragmentDetailHabitBinding
 import com.larsorbegozo.habbyt.BaseApplication
 import com.larsorbegozo.habbyt.model.Habit
 import com.larsorbegozo.habbyt.model.HabitIcon
+import com.larsorbegozo.habbyt.model.IconColorsProvider
 import com.larsorbegozo.habbyt.model.IconsProvider
 import com.larsorbegozo.habbyt.viewmodel.HabitViewModel
 import com.larsorbegozo.habbyt.viewmodel.HabitViewModelFactory
@@ -67,6 +69,7 @@ class DetailHabitFragment : Fragment() {
         binding.apply {
             habitName.text = habit.name
             habitImage.setImageResource(IconsProvider.habitIconLists[habit.image].image)
+            habitImage.setColorFilter(getColor(requireContext(), IconColorsProvider.habitIconColorLists[habit.color].color))
             habitDescription.text = habit.description
             habitFrequency.text = "FREQUENCY" // TODO: Hardcoded text
             habitGoal.text = habit.goal.toString()

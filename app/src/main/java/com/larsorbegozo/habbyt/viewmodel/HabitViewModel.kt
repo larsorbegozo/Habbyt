@@ -5,6 +5,7 @@ import com.larsorbegozo.habbyt.R
 import com.larsorbegozo.habbyt.data.habit.HabitDao
 import com.larsorbegozo.habbyt.model.Habit
 import com.larsorbegozo.habbyt.model.HabitIcon
+import com.larsorbegozo.habbyt.model.HabitIconColor
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
@@ -17,20 +18,28 @@ class HabitViewModel(private val habitDao: HabitDao) : ViewModel() {
     private val habitEventChannel = Channel<HabitEvent>()
     val habitEvent = habitEventChannel.receiveAsFlow()
 
-    // ! I think I just need ID variable
-    private var _tempImage = MutableLiveData(R.drawable.pedal_bike)
-    val tempImage: LiveData<Int> = _tempImage
+    // Used for changing in real time when adding/editing the habit
+    private var _tempImageDrawable = MutableLiveData(R.drawable.pedal_bike)
+    val tempImageDrawable: LiveData<Int> = _tempImageDrawable
 
-    private var _tempImageName = MutableLiveData<String>("pedal_bike")
-    val tempImageName: LiveData<String> = _tempImageName
+    private var _tempImageColor = MutableLiveData(R.color.black)
+    val tempImageColor: LiveData<Int> = _tempImageColor
 
-    private var _tempImageID = MutableLiveData<Int>(0)
+    // Used for access with ID into the Provider
+    private var _tempImageID = MutableLiveData(0)
     val tempImageID: LiveData<Int> = _tempImageID
 
+    private var _tempImageColorID = MutableLiveData(0)
+    val tempImageColorID: LiveData<Int> = _tempImageColorID
+
     fun setIcon(icon: HabitIcon) {
-        _tempImage.value = icon.image
-        _tempImageName.value = icon.name
         _tempImageID.value = icon.id
+        _tempImageDrawable.value = icon.image
+    }
+
+    fun setIconColor(iconColor: HabitIconColor) {
+        _tempImageColorID.value = iconColor.id
+        _tempImageColor.value = iconColor.color
     }
 
     fun getHabit(id: Long): LiveData<Habit> {
@@ -43,7 +52,8 @@ class HabitViewModel(private val habitDao: HabitDao) : ViewModel() {
         image: Int,
         goal: Int,
         unit: String,
-        status: Boolean
+        status: Boolean,
+        color: Int
     ) {
         val habit = Habit(
             name = name,
@@ -51,7 +61,8 @@ class HabitViewModel(private val habitDao: HabitDao) : ViewModel() {
             image = image,
             goal = goal,
             unit = unit,
-            status = status
+            status = status,
+            color = color
         )
 
         viewModelScope.launch {
@@ -66,9 +77,10 @@ class HabitViewModel(private val habitDao: HabitDao) : ViewModel() {
         image: Int,
         goal: Int,
         unit: String,
-        status: Boolean
+        status: Boolean,
+        color: Int
     ) {
-        val updatedHabit = Habit(id, name, description, image, goal, unit, status)
+        val updatedHabit = Habit(id, name, description, image, goal, unit, status, color)
         viewModelScope.launch(Dispatchers.IO) {
             habitDao.update(updatedHabit)
         }

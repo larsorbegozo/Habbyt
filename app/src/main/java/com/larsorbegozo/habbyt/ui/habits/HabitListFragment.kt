@@ -1,14 +1,14 @@
 package com.larsorbegozo.habbyt.ui.habits
 
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.larsorbegozo.habbyt.R
@@ -19,6 +19,7 @@ import com.larsorbegozo.habbyt.model.Habit
 import com.larsorbegozo.habbyt.ui.adapter.HabitListAdapter
 import com.larsorbegozo.habbyt.viewmodel.HabitViewModel
 import com.larsorbegozo.habbyt.viewmodel.HabitViewModelFactory
+import kotlinx.coroutines.launch
 
 class HabitListFragment : Fragment(), HabitListAdapter.OnItemClickListener {
 
@@ -44,7 +45,7 @@ class HabitListFragment : Fragment(), HabitListAdapter.OnItemClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapter = HabitListAdapter(this)
+        val adapter = HabitListAdapter(this, requireContext())
 
         viewModel.allHabits.observe(this.viewLifecycleOwner) {
             habits -> habits.let {
@@ -63,15 +64,17 @@ class HabitListFragment : Fragment(), HabitListAdapter.OnItemClickListener {
             topBar.setTitle(R.string.list_fragment_topbar_title)
         }
         
-        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-            viewModel.habitEvent.collect() { event ->
-                when(event) {
-                    is HabitViewModel.HabitEvent.NavigateToDetailHabitScreen -> {
-                        val action =
-                            HabitListFragmentDirections.actionHabitListFragmentToDetailHabitFragment(
-                                event.habit.id
-                            )
-                        findNavController().navigate(action)
+        viewLifecycleOwner.lifecycleScope.launch {
+            lifecycle.repeatOnLifecycle(Lifecycle.State.RESUMED) {
+                viewModel.habitEvent.collect { event ->
+                    when(event) {
+                        is HabitViewModel.HabitEvent.NavigateToDetailHabitScreen -> {
+                            val action =
+                                HabitListFragmentDirections.actionHabitListFragmentToDetailHabitFragment(
+                                    event.habit.id
+                                )
+                            findNavController().navigate(action)
+                        }
                     }
                 }
             }

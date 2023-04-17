@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.core.content.ContextCompat.getColor
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -14,6 +14,7 @@ import com.larsorbegozo.habbyt.R
 import com.larsorbegozo.habbyt.BaseApplication
 import com.larsorbegozo.habbyt.databinding.FragmentAddEditHabitBinding
 import com.larsorbegozo.habbyt.model.Habit
+import com.larsorbegozo.habbyt.model.IconColorsProvider
 import com.larsorbegozo.habbyt.model.IconsProvider
 import com.larsorbegozo.habbyt.ui.IconSelectSheetFragment
 import com.larsorbegozo.habbyt.viewmodel.HabitViewModel
@@ -59,8 +60,12 @@ class AddEditHabitFragment : Fragment() {
             }
 
             // HabitIcon changes when editing before saving
-            viewModel.tempImage.observe(this.viewLifecycleOwner) {
+            viewModel.tempImageDrawable.observe(this.viewLifecycleOwner) {
                 binding?.habitImage?.setImageResource(it)
+            }
+
+            viewModel.tempImageColor.observe(this.viewLifecycleOwner) {
+                binding?.habitImage?.setColorFilter(getColor(requireContext(), it))
             }
 
             // DELETE HABIT
@@ -76,21 +81,21 @@ class AddEditHabitFragment : Fragment() {
             binding?.saveAction?.setOnClickListener {
                 if(binding?.itemName?.text!!.isBlank()) {
                     binding?.itemNameLabel?.isErrorEnabled = true
-                    binding?.itemNameLabel?.error = getString(R.string.app_name)
+                    binding?.itemNameLabel?.error = getString(R.string.empty_field_error)
                 } else {
                     binding?.itemNameLabel?.isErrorEnabled = false
                     habitNameField = true
                 }
                 if(binding?.itemGoal?.text!!.isBlank()) {
                     binding?.itemGoalLabel?.isErrorEnabled = true
-                    binding?.itemGoalLabel?.error = getString(R.string.app_name)
+                    binding?.itemGoalLabel?.error = getString(R.string.empty_field_error)
                 } else {
                     binding?.itemGoalLabel?.isErrorEnabled = false
                     habitGoalField = true
                 }
                 if(binding?.itemUnit?.text!!.isBlank()) {
                     binding?.itemUnitLabel?.isErrorEnabled = true
-                    binding?.itemUnitLabel?.error = getString(R.string.app_name)
+                    binding?.itemUnitLabel?.error = getString(R.string.empty_field_error)
                 } else {
                     binding?.itemUnitLabel?.isErrorEnabled = false
                     habitUnitField = true
@@ -102,15 +107,20 @@ class AddEditHabitFragment : Fragment() {
                         binding!!.itemDescription.text.toString(),
                         viewModel.tempImageID.value!!,
                         binding!!.itemGoal.text.toString().toInt(),
-                        binding!!.itemUnit.text.toString()
+                        binding!!.itemUnit.text.toString(),
+                        viewModel.tempImageColorID.value!!
                     )
                 }
             }
             binding?.topBar?.setTitle(R.string.add_habit_topbar_title)
 
             // HabitIcon changes when adding before saving
-            viewModel.tempImage.observe(this.viewLifecycleOwner) {
+            viewModel.tempImageDrawable.observe(this.viewLifecycleOwner) {
                 binding?.habitImage?.setImageResource(it)
+            }
+
+            viewModel.tempImageColor.observe(this.viewLifecycleOwner) {
+                binding?.habitImage?.setColorFilter(getColor(requireContext(), it))
             }
         }
 
@@ -130,8 +140,8 @@ class AddEditHabitFragment : Fragment() {
         }
     }
 
-    private fun addHabit(name: String, description: String, icon: Int, goal: Int, unit: String) {
-        viewModel.addHabit(name, description, icon, goal, unit, false) // false because the new habit doesn't need to be checked
+    private fun addHabit(name: String, description: String, icon: Int, goal: Int, unit: String, color: Int) {
+        viewModel.addHabit(name, description, icon, goal, unit, false, color) // false because the new habit doesn't need to be checked
         findNavController().navigate(R.id.action_addEditHabitFragment_to_habitListFragment)
     }
 
@@ -143,7 +153,8 @@ class AddEditHabitFragment : Fragment() {
             viewModel.tempImageID.value!!,
             binding?.itemGoal?.text.toString().toInt(),
             binding?.itemUnit?.text.toString(),
-            habit.status
+            habit.status,
+            viewModel.tempImageColorID.value!!
         )
         val action = AddEditHabitFragmentDirections.actionAddEditHabitFragmentToHabitListFragment()
         findNavController().navigate(action)
@@ -161,6 +172,7 @@ class AddEditHabitFragment : Fragment() {
         binding?.itemName?.setText(habit.name)
         binding?.itemDescription?.setText(habit.description)
         binding?.habitImage?.setImageResource(IconsProvider.habitIconLists[habit.image].image)
+        binding?.habitImage?.setColorFilter(getColor(requireContext(), IconColorsProvider.habitIconColorLists[habit.color].color))
         binding?.itemGoal?.setText(habit.goal.toString())
         binding?.itemUnit?.setText(habit.unit)
         binding?.saveAction?.setOnClickListener {
@@ -169,21 +181,21 @@ class AddEditHabitFragment : Fragment() {
             habitUnitField = false
             if(binding?.itemName?.text!!.isBlank()) {
                 binding?.itemNameLabel?.isErrorEnabled = true
-                binding?.itemNameLabel?.error = getString(R.string.app_name)
+                binding?.itemNameLabel?.error = getString(R.string.empty_field_error)
             } else {
                 binding?.itemNameLabel?.isErrorEnabled = false
                 habitNameField = true
             }
             if(binding?.itemGoal?.text!!.isBlank()) {
                 binding?.itemGoalLabel?.isErrorEnabled = true
-                binding?.itemGoalLabel?.error = getString(R.string.app_name)
+                binding?.itemGoalLabel?.error = getString(R.string.empty_field_error)
             } else {
                 binding?.itemGoalLabel?.isErrorEnabled = false
                 habitGoalField = true
             }
             if(binding?.itemUnit?.text!!.isBlank()) {
                 binding?.itemUnitLabel?.isErrorEnabled = true
-                binding?.itemUnitLabel?.error = getString(R.string.app_name)
+                binding?.itemUnitLabel?.error = getString(R.string.empty_field_error)
             } else {
                 binding?.itemUnitLabel?.isErrorEnabled = false
                 habitUnitField = true

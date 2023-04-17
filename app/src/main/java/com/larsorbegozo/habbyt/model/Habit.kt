@@ -13,5 +13,6 @@ data class Habit(
     @ColumnInfo("image") val image: Int,
     @ColumnInfo("goal") val goal: Int,
     @ColumnInfo("unit") val unit: String,
-    @ColumnInfo("status") val status: Boolean
+    @ColumnInfo("status") val status: Boolean,
+    @ColumnInfo("color") val color: Int
 )

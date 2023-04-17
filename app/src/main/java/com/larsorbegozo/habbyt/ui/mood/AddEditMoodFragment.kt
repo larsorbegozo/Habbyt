@@ -77,7 +77,7 @@ class AddEditMoodFragment : Fragment() {
     }
 
     private fun addMood(title: String, text: String) {
-        // Date formatting
+        // Date formatting TODO: Add hh:mm
         val currentDate = LocalDateTime.now()
         val formatter = DateTimeFormatter.ISO_LOCAL_DATE
         val formatted = currentDate.format(formatter).toString()
