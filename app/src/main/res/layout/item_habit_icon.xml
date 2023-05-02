@@ -5,25 +5,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/card_view"
     android:layout_width="match_parent"
-    android:layout_height="56dp"
-    android:layout_margin="8dp"
+    android:layout_height="55dp"
+    android:layout_margin="6dp"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintLeft_toRightOf="parent"
     app:cardCornerRadius="16dp"
     android:elevation="3dp"
-    style="@style/CardView"
-    android:backgroundTint="@color/black">
+    style="@style/CardView.custom">
 
     <ImageView
         android:id="@+id/select_icon_button"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_margin="4dp"
         android:layout_gravity="center"
         android:padding="8dp"
+
         tools:src="@drawable/pedal_bike"
-        app:tint="@color/white">
+        style="@style/icon">
     </ImageView>
 
 </com.google.android.material.card.MaterialCardView>

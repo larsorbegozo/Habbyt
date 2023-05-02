@@ -42,7 +42,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/divider"
-        tools:listitem="@layout/list_item_mood" />
+        tools:listitem="@layout/item_mood" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

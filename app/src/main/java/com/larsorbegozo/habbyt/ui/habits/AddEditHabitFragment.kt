@@ -1,25 +1,36 @@
 package com.larsorbegozo.habbyt.ui.habits
 
+import android.app.AlarmManager
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
+import android.content.Context
+import android.content.Intent
 import android.content.res.ColorStateList
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat.getColor
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.larsorbegozo.habbyt.R
 import com.larsorbegozo.habbyt.BaseApplication
+import com.larsorbegozo.habbyt.MainActivity
 import com.larsorbegozo.habbyt.databinding.FragmentAddEditHabitBinding
 import com.larsorbegozo.habbyt.model.Habit
-import com.larsorbegozo.habbyt.model.IconColorsProvider
-import com.larsorbegozo.habbyt.model.IconsProvider
-import com.larsorbegozo.habbyt.ui.IconSelectSheetFragment
+import com.larsorbegozo.habbyt.model.provider.HabitColorsProvider
+import com.larsorbegozo.habbyt.model.provider.HabitIconsProvider
+import com.larsorbegozo.habbyt.notification.AlarmNotification
+import com.larsorbegozo.habbyt.ui.HabitIconDialogFragment
 import com.larsorbegozo.habbyt.viewmodel.HabitViewModel
 import com.larsorbegozo.habbyt.viewmodel.HabitViewModelFactory
+import java.util.Calendar
 
 class AddEditHabitFragment : Fragment() {
     private val viewModel: HabitViewModel by activityViewModels {
@@ -36,6 +47,28 @@ class AddEditHabitFragment : Fragment() {
     private var _binding: FragmentAddEditHabitBinding? = null
     private val binding get() = _binding
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        createChannel()
+    }
+
+    private fun createChannel() {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val channel = NotificationChannel(
+                MainActivity.MY_CHANNEL_ID,
+                "MyTestingChannel",
+                NotificationManager.IMPORTANCE_DEFAULT
+            ).apply {
+                description = "Testeame esta"
+            }
+
+            val notificationManager: NotificationManager =
+                activity?.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
+            notificationManager.createNotificationChannel(channel)
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -51,6 +84,10 @@ class AddEditHabitFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding?.testingNotif?.setOnClickListener {
+            scheduleNotification()
+        }
 
         val id = navigationArgs.id
         if(id > 0) {
@@ -137,8 +174,24 @@ class AddEditHabitFragment : Fragment() {
         materialAlertDialog = MaterialAlertDialogBuilder(requireContext())
 
         binding?.habitImageCard?.setOnClickListener{
-            IconSelectSheetFragment().show(parentFragmentManager.beginTransaction(), "uwu")
+            val fragmentManager = requireActivity().supportFragmentManager
+            val transaction = fragmentManager.beginTransaction()
+            transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+            HabitIconDialogFragment().show(transaction, "dialog")
         }
+    }
+
+    private fun scheduleNotification() {
+        val intent = Intent(requireContext().applicationContext, AlarmNotification::class.java)
+        val pendingIntent = PendingIntent.getBroadcast(
+            requireContext().applicationContext,
+            AlarmNotification.NOTIFICATION_ID,
+            intent,
+            PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
+        )
+
+        val alarmManager = activity?.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        alarmManager.setExact(AlarmManager.RTC_WAKEUP, Calendar.getInstance().timeInMillis, pendingIntent)
     }
 
     private fun addHabit(name: String, description: String, icon: Int, goal: Int, unit: String, color: Int) {
@@ -172,8 +225,8 @@ class AddEditHabitFragment : Fragment() {
         binding?.topBar?.setTitle(R.string.edit_habit_topbar_title)
         binding?.itemName?.setText(habit.name)
         binding?.itemDescription?.setText(habit.description)
-        binding?.habitImage?.setImageResource(IconsProvider.habitIconLists[habit.image].image)
-        binding?.habitImageCard?.backgroundTintList = ColorStateList.valueOf(getColor(requireContext(), IconColorsProvider.habitIconColorLists[habit.color].color))
+        binding?.habitImage?.setImageResource(HabitIconsProvider.habitIconLists[habit.image].image)
+        binding?.habitImageCard?.backgroundTintList = ColorStateList.valueOf(getColor(requireContext(), HabitColorsProvider.habitIconColorLists[habit.color].color))
         binding?.itemGoal?.setText(habit.goal.toString())
         binding?.itemUnit?.setText(habit.unit)
         binding?.saveAction?.setOnClickListener {

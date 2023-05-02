@@ -10,9 +10,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.larsorbegozo.habbyt.R
-import com.larsorbegozo.habbyt.databinding.FragmentMoodBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.larsorbegozo.habbyt.BaseApplication
+import com.larsorbegozo.habbyt.databinding.FragmentMoodListBinding
 import com.larsorbegozo.habbyt.model.Mood
 import com.larsorbegozo.habbyt.ui.adapter.MoodListAdapter
 import com.larsorbegozo.habbyt.viewmodel.MoodViewModel
@@ -27,7 +27,7 @@ class MoodListFragment : Fragment(), MoodListAdapter.OnItemClickListener {
         )
     }
 
-    private var _binding: FragmentMoodBinding? = null
+    private var _binding: FragmentMoodListBinding? = null
     private val binding get() = _binding
 
     override fun onCreateView(
@@ -35,7 +35,7 @@ class MoodListFragment : Fragment(), MoodListAdapter.OnItemClickListener {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        _binding = FragmentMoodBinding.inflate(layoutInflater, container, false)
+        _binding = FragmentMoodListBinding.inflate(layoutInflater, container, false)
         return binding?.root
     }
 

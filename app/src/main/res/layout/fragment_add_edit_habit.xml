@@ -160,4 +160,17 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/save_action" />
     <!--Delete Button-->
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/testing_notif"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="NOTIF"
+        android:textColor="@color/orange_200"
+        android:backgroundTint="@color/red_700"
+        app:layout_constraintTop_toTopOf="@id/habit_image_card"
+        app:layout_constraintBottom_toBottomOf="@id/habit_image_card"
+        app:layout_constraintRight_toRightOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

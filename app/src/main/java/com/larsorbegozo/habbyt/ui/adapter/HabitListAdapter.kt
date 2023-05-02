@@ -5,22 +5,22 @@ import android.content.res.ColorStateList
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat.getColor
+import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.larsorbegozo.habbyt.R
-import com.larsorbegozo.habbyt.databinding.ListItemHabitBinding
+import com.larsorbegozo.habbyt.databinding.ItemHabitBinding
 import com.larsorbegozo.habbyt.model.Habit
-import com.larsorbegozo.habbyt.model.IconColorsProvider
-import com.larsorbegozo.habbyt.model.IconsProvider
+import com.larsorbegozo.habbyt.model.provider.HabitColorsProvider
+import com.larsorbegozo.habbyt.model.provider.HabitIconsProvider
 
 class HabitListAdapter(private val listener: OnItemClickListener, private val context: Context) : ListAdapter<Habit, HabitListAdapter.HabitViewHolder>(DiffCallback){
 
-    inner class HabitViewHolder(private var binding: ListItemHabitBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class HabitViewHolder(private var binding: ItemHabitBinding) : RecyclerView.ViewHolder(binding.root) {
 
         init {
             binding.apply {
-                root.setOnClickListener {
+                rootLayout.setOnClickListener {
                     val position = adapterPosition
                     if(position != RecyclerView.NO_POSITION) {
                         val habitPosition = getItem(position)
@@ -40,8 +40,8 @@ class HabitListAdapter(private val listener: OnItemClickListener, private val co
         fun bind(habit: Habit) {
             binding.habitName.text = habit.name
             binding.checkbox.isChecked = habit.status
-            binding.habitIcon.setImageResource(IconsProvider.habitIconLists[habit.image].image)
-            binding.cardView.backgroundTintList = ColorStateList.valueOf(getColor(context, IconColorsProvider.habitIconColorLists[habit.color].color))
+            binding.habitIcon.setImageResource(HabitIconsProvider.habitIconLists[habit.image].image)
+            binding.cardView.backgroundTintList = ColorStateList.valueOf(getColor(context, HabitColorsProvider.habitIconColorLists[habit.color].color))
         }
     }
 
@@ -53,7 +53,7 @@ class HabitListAdapter(private val listener: OnItemClickListener, private val co
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HabitViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         return HabitViewHolder(
-            ListItemHabitBinding.inflate(layoutInflater, parent, false)
+            ItemHabitBinding.inflate(layoutInflater, parent, false)
         )
     }
 

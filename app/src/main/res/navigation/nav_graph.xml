@@ -65,7 +65,7 @@
     <fragment
         android:id="@+id/moodFragment"
         android:name="com.larsorbegozo.habbyt.ui.mood.MoodListFragment"
-        tools:layout="@layout/fragment_mood">
+        tools:layout="@layout/fragment_mood_list">
         <action
             android:id="@+id/action_moodFragment_to_detailMoodFragment"
             app:destination="@id/detailMoodFragment" />
@@ -104,7 +104,7 @@
     </fragment>
     <fragment
         android:id="@+id/iconSelectSheetFragment"
-        android:name="com.larsorbegozo.habbyt.ui.IconSelectSheetFragment"
+        android:name="com.larsorbegozo.habbyt.ui.HabitIconDialogFragment"
         android:label="fragment_icon_select_sheet"
-        tools:layout="@layout/fragment_icon_select_sheet" />
+        tools:layout="@layout/fragment_habit_icon_dialog" />
 </navigation>

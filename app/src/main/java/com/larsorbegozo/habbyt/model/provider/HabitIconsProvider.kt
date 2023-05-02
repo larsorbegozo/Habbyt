@@ -1,0 +1,66 @@
+package com.larsorbegozo.habbyt.model.provider
+
+import com.larsorbegozo.habbyt.R
+import com.larsorbegozo.habbyt.model.HabitIcon
+
+class HabitIconsProvider {
+    companion object {
+        val habitIconLists: List<HabitIcon> = listOf(
+            HabitIcon(0, "pedal_bike", R.drawable.pedal_bike),
+            HabitIcon(1, "arrow_back", R.drawable.arrow_back),
+            HabitIcon(2, "mood_icon", R.drawable.mood_icon),
+            HabitIcon(3, "star_icon", R.drawable.achievements_icon),
+            HabitIcon(4, "list", R.drawable.habit_list_icon),
+            HabitIcon(5, "equis", R.drawable.close_icon),
+            HabitIcon(6, "settings", R.drawable.settings_icon),
+            HabitIcon(7, "pedal_bike", R.drawable.pedal_bike),
+            HabitIcon(8, "arrow_back", R.drawable.arrow_back),
+            HabitIcon(9, "mood_icon", R.drawable.mood_icon),
+            HabitIcon(10, "star_icon", R.drawable.achievements_icon),
+            HabitIcon(11, "list", R.drawable.habit_list_icon),
+            HabitIcon(12, "equis", R.drawable.close_icon),
+            HabitIcon(13, "settings", R.drawable.settings_icon),
+            HabitIcon(14, "pedal_bike", R.drawable.pedal_bike),
+            HabitIcon(15, "arrow_back", R.drawable.arrow_back),
+            HabitIcon(16, "mood_icon", R.drawable.mood_icon),
+            HabitIcon(17, "star_icon", R.drawable.achievements_icon),
+            HabitIcon(18, "list", R.drawable.habit_list_icon),
+            HabitIcon(19, "equis", R.drawable.close_icon),
+            HabitIcon(20, "settings", R.drawable.settings_icon),
+            HabitIcon(21, "pedal_bike", R.drawable.pedal_bike),
+            HabitIcon(22, "arrow_back", R.drawable.arrow_back),
+            HabitIcon(23, "mood_icon", R.drawable.mood_icon),
+            HabitIcon(24, "star_icon", R.drawable.achievements_icon),
+            HabitIcon(25, "list", R.drawable.habit_list_icon),
+            HabitIcon(26, "equis", R.drawable.close_icon),
+            HabitIcon(27, "settings", R.drawable.settings_icon),
+            HabitIcon(28, "pedal_bike", R.drawable.pedal_bike),
+            HabitIcon(29, "arrow_back", R.drawable.arrow_back),
+            HabitIcon(30, "mood_icon", R.drawable.mood_icon),
+            HabitIcon(31, "star_icon", R.drawable.achievements_icon),
+            HabitIcon(32, "list", R.drawable.habit_list_icon),
+            HabitIcon(33, "equis", R.drawable.close_icon),
+            HabitIcon(34, "settings", R.drawable.settings_icon),
+            HabitIcon(35, "pedal_bike", R.drawable.pedal_bike),
+            HabitIcon(36, "arrow_back", R.drawable.arrow_back),
+            HabitIcon(37, "mood_icon", R.drawable.mood_icon),
+            HabitIcon(38, "star_icon", R.drawable.achievements_icon),
+            HabitIcon(39, "list", R.drawable.habit_list_icon),
+            HabitIcon(40, "equis", R.drawable.close_icon),
+            HabitIcon(41, "settings", R.drawable.settings_icon),
+            HabitIcon(42, "pedal_bike", R.drawable.pedal_bike),
+            HabitIcon(43, "arrow_back", R.drawable.arrow_back),
+            HabitIcon(44, "mood_icon", R.drawable.mood_icon),
+            HabitIcon(45, "star_icon", R.drawable.achievements_icon),
+            HabitIcon(46, "list", R.drawable.habit_list_icon),
+            HabitIcon(47, "equis", R.drawable.close_icon),
+            HabitIcon(48, "settings", R.drawable.settings_icon),
+            HabitIcon(49, "pedal_bike", R.drawable.pedal_bike),
+            HabitIcon(50, "arrow_back", R.drawable.arrow_back),
+            HabitIcon(51, "mood_icon", R.drawable.mood_icon),
+            HabitIcon(52, "star_icon", R.drawable.achievements_icon),
+            HabitIcon(53, "list", R.drawable.habit_list_icon),
+            HabitIcon(54, "equis", R.drawable.close_icon)
+        )
+    }
+}

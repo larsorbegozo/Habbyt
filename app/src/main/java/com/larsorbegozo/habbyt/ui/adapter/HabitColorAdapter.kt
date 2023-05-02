@@ -5,13 +5,14 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat.getColor
 import androidx.recyclerview.widget.RecyclerView
-import com.larsorbegozo.habbyt.databinding.ListColorSelectBinding
-import com.larsorbegozo.habbyt.model.HabitIconColor
+import com.larsorbegozo.habbyt.databinding.ItemHabitColorBinding
+import com.larsorbegozo.habbyt.model.HabitColor
+import com.larsorbegozo.habbyt.viewmodel.HabitViewModel
 
-class IconColorAdapter(private val habitIconColorList: List<HabitIconColor>, private val listener: OnItemClickListener, private val context: Context) : RecyclerView.Adapter<IconColorAdapter.IconsViewHolder>() {
+class HabitColorAdapter(private val habitIconColorList: List<HabitColor>, private val listener: OnItemClickListener, private val context: Context) : RecyclerView.Adapter<HabitColorAdapter.IconsViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IconsViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        return IconsViewHolder(ListColorSelectBinding.inflate(layoutInflater, parent, false))
+        return IconsViewHolder(ItemHabitColorBinding.inflate(layoutInflater, parent, false))
     }
 
     override fun onBindViewHolder(holder: IconsViewHolder, position: Int) {
@@ -23,7 +24,7 @@ class IconColorAdapter(private val habitIconColorList: List<HabitIconColor>, pri
         return habitIconColorList.size
     }
 
-    inner class IconsViewHolder(private var binding: ListColorSelectBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class IconsViewHolder(private var binding: ItemHabitColorBinding) : RecyclerView.ViewHolder(binding.root) {
         init {
             binding.apply {
                 imageTesting.setOnClickListener {
@@ -36,12 +37,12 @@ class IconColorAdapter(private val habitIconColorList: List<HabitIconColor>, pri
             }
         }
 
-        fun render(iconColor: HabitIconColor) {
+        fun render(iconColor: HabitColor) {
             binding.imageTesting.setColorFilter(getColor(context, iconColor.color))
         }
     }
 
     interface OnItemClickListener {
-        fun onIconClicked(habitIconColor: HabitIconColor)
+        fun onIconClicked(habitIconColor: HabitColor)
     }
 }

@@ -5,7 +5,7 @@ import com.larsorbegozo.habbyt.R
 import com.larsorbegozo.habbyt.data.habit.HabitDao
 import com.larsorbegozo.habbyt.model.Habit
 import com.larsorbegozo.habbyt.model.HabitIcon
-import com.larsorbegozo.habbyt.model.HabitIconColor
+import com.larsorbegozo.habbyt.model.HabitColor
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
@@ -37,7 +37,7 @@ class HabitViewModel(private val habitDao: HabitDao) : ViewModel() {
         _tempImageDrawable.value = icon.image
     }
 
-    fun setIconColor(iconColor: HabitIconColor) {
+    fun setIconColor(iconColor: HabitColor) {
         _tempImageColorID.value = iconColor.id
         _tempImageColor.value = iconColor.color
     }

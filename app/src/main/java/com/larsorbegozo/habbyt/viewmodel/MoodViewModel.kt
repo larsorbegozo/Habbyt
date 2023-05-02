@@ -28,12 +28,14 @@ class MoodViewModel (private val moodDao: MoodDao) : ViewModel() {
     fun addMood(
         title: String,
         text: String,
-        date: String
+        date: String,
+        hour: String
     ) {
         val mood = Mood(
             title = title,
             text = text,
-            date = date
+            date = date,
+            hour = hour
         )
 
         viewModelScope.launch {
@@ -45,9 +47,10 @@ class MoodViewModel (private val moodDao: MoodDao) : ViewModel() {
         id: Long,
         title: String,
         text: String,
-        date: String
+        date: String,
+        hour: String
     ) {
-        val updatedMood = Mood(id, title, text, date)
+        val updatedMood = Mood(id, title, text, date, hour)
         viewModelScope.launch(Dispatchers.IO) {
             moodDao.update(updatedMood)
         }

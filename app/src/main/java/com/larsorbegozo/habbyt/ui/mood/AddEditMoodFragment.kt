@@ -1,6 +1,7 @@
 package com.larsorbegozo.habbyt.ui.mood
 
 import android.os.Bundle
+import android.text.format.DateFormat
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,8 +15,10 @@ import com.larsorbegozo.habbyt.BaseApplication
 import com.larsorbegozo.habbyt.model.Mood
 import com.larsorbegozo.habbyt.viewmodel.HabitViewModelFactory
 import com.larsorbegozo.habbyt.viewmodel.MoodViewModel
+import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
+import java.util.Locale
 
 class AddEditMoodFragment : Fragment() {
 
@@ -77,12 +80,16 @@ class AddEditMoodFragment : Fragment() {
     }
 
     private fun addMood(title: String, text: String) {
-        // Date formatting TODO: Add hh:mm
+        // ! This only works if I use the API 26
         val currentDate = LocalDateTime.now()
-        val formatter = DateTimeFormatter.ISO_LOCAL_DATE
-        val formatted = currentDate.format(formatter).toString()
+        val dateFormatter = DateTimeFormatter.ISO_LOCAL_DATE
+        val dateFormatted = currentDate.format(dateFormatter).toString()
 
-        viewModel.addMood(title, text, formatted)
+        val currentHour = LocalDateTime.now()
+        val hourFormatter = DateTimeFormatter.ofPattern("kk:mm") // TODO: Fit depending on the locale
+        val hourFormatted = currentHour.format(hourFormatter).toString()
+
+        viewModel.addMood(title, text, dateFormatted, hourFormatted)
         findNavController().navigate(R.id.action_addEditMoodFragment_to_moodFragment)
     }
 
@@ -91,7 +98,8 @@ class AddEditMoodFragment : Fragment() {
             navigationArgs.id,
             binding?.noteTitleInput?.text.toString(),
             binding?.noteTextInput?.text.toString(),
-            mood.date
+            mood.date,
+            mood.hour
         )
         val action = AddEditMoodFragmentDirections.actionAddEditMoodFragmentToMoodFragment()
         findNavController().navigate(action)

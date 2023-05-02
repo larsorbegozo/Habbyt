@@ -19,4 +19,5 @@
     <string name="mood_note_title">Note Title:</string>
     <string name="total_notes">"Total notes: "</string>
     <string name="empty_field_error">Fill out, please</string>
+    <string name="habit_done">Done</string>
 </resources>

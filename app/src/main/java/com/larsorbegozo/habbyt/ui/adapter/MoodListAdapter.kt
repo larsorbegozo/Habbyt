@@ -5,12 +5,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.larsorbegozo.habbyt.databinding.ListItemMoodBinding
+import com.larsorbegozo.habbyt.databinding.ItemMoodBinding
 import com.larsorbegozo.habbyt.model.Mood
 
 class MoodListAdapter(private val listener: OnItemClickListener) : ListAdapter<Mood, MoodListAdapter.MoodViewHolder>(DiffCallback) {
 
-    inner class MoodViewHolder(private var binding: ListItemMoodBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class MoodViewHolder(private var binding: ItemMoodBinding) : RecyclerView.ViewHolder(binding.root) {
 
         init {
             binding.apply {
@@ -29,6 +29,7 @@ class MoodListAdapter(private val listener: OnItemClickListener) : ListAdapter<M
                 moodTitle.text = mood.title
                 moodText.text = mood.text
                 moodDate.text = mood.date
+                moodHour.text = mood.hour
             }
         }
     }
@@ -40,7 +41,7 @@ class MoodListAdapter(private val listener: OnItemClickListener) : ListAdapter<M
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoodViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         return MoodViewHolder(
-            ListItemMoodBinding.inflate(layoutInflater, parent, false)
+            ItemMoodBinding.inflate(layoutInflater, parent, false)
         )
     }
 

@@ -13,12 +13,17 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI.setupWithNavController
 import com.larsorbegozo.habbyt.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.larsorbegozo.habbyt.ui.HabitIconDialogFragment
 import com.larsorbegozo.habbyt.ui.habits.AddEditHabitFragment
 import com.larsorbegozo.habbyt.ui.mood.AddEditMoodFragment
 import com.larsorbegozo.habbyt.ui.habits.DetailHabitFragment
 import com.larsorbegozo.habbyt.ui.mood.DetailMoodFragment
 
 class MainActivity : AppCompatActivity() {
+
+    companion object {
+        const val MY_CHANNEL_ID = "myChannel"
+    }
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
@@ -67,6 +72,11 @@ class MainActivity : AppCompatActivity() {
                         binding.addHabitFab.visibility = View.INVISIBLE
                     }
                     is DetailMoodFragment -> {
+                        binding.bottomBarNavigation.visibility = View.INVISIBLE
+                        binding.bottomBar.visibility = View.INVISIBLE
+                        binding.addHabitFab.visibility = View.INVISIBLE
+                    }
+                    is HabitIconDialogFragment -> {
                         binding.bottomBarNavigation.visibility = View.INVISIBLE
                         binding.bottomBar.visibility = View.INVISIBLE
                         binding.addHabitFab.visibility = View.INVISIBLE

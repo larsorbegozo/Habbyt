@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+
     <application
         android:name="com.larsorbegozo.habbyt.BaseApplication"
         android:allowBackup="true"
@@ -12,10 +15,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Habbyt"
         tools:targetApi="31">
+        <receiver android:name=".notification.AlarmNotification"
+            android:enabled="true"/>
         <activity
             android:name="com.larsorbegozo.habbyt.MainActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan"
-            android:exported="true">
+            android:exported="true"
+            tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

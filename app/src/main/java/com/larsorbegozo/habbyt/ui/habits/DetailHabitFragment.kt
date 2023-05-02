@@ -14,9 +14,8 @@ import com.larsorbegozo.habbyt.R
 import com.larsorbegozo.habbyt.databinding.FragmentDetailHabitBinding
 import com.larsorbegozo.habbyt.BaseApplication
 import com.larsorbegozo.habbyt.model.Habit
-import com.larsorbegozo.habbyt.model.HabitIcon
-import com.larsorbegozo.habbyt.model.IconColorsProvider
-import com.larsorbegozo.habbyt.model.IconsProvider
+import com.larsorbegozo.habbyt.model.provider.HabitColorsProvider
+import com.larsorbegozo.habbyt.model.provider.HabitIconsProvider
 import com.larsorbegozo.habbyt.viewmodel.HabitViewModel
 import com.larsorbegozo.habbyt.viewmodel.HabitViewModelFactory
 
@@ -69,8 +68,8 @@ class DetailHabitFragment : Fragment() {
     private fun bindHabit() {
         binding.apply {
             habitName.text = habit.name
-            habitImage.setImageResource(IconsProvider.habitIconLists[habit.image].image)
-            habitImageCard.backgroundTintList = ColorStateList.valueOf(getColor(requireContext(), IconColorsProvider.habitIconColorLists[habit.color].color))
+            habitImage.setImageResource(HabitIconsProvider.habitIconLists[habit.image].image)
+            habitImageCard.backgroundTintList = ColorStateList.valueOf(getColor(requireContext(), HabitColorsProvider.habitIconColorLists[habit.color].color))
             habitDescription.text = habit.description
             habitFrequency.text = "FREQUENCY" // TODO: Hardcoded text
             habitGoal.text = habit.goal.toString()

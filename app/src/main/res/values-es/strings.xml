@@ -18,4 +18,6 @@
     <string name="habit_detail_unit">Unidad:</string>
     <string name="mood_note_title">Título:</string>
     <string name="total_notes">"Total de notas: "</string>
+    <string name="empty_field_error">Rellenar, por favor</string>
+    <string name="habit_done">Hecho</string>
 </resources>

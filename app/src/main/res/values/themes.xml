@@ -37,10 +37,25 @@
     <style name="CardView.custom" parent="Widget.MaterialComponents.CardView">
         <item name="android:backgroundTint">#C8C8C8</item>
         <item name="android:elevation">3dp</item>
-        <item name="cardCornerRadius">16dp</item>
+        <item name="cardCornerRadius">100dp</item>
     </style>
 
     <style name="habitIconStyle">
         <item name="android:tint">@color/white</item>
+    </style>
+
+    <style name="icon">
+        <item name="tint">#121212</item>
+    </style>
+
+    <style name="background">
+        <item name="android:background">@color/white</item>
+    </style>
+
+    <style name="Widget.MaterialComponents.Button.OutlinedButton.Icon.Custom" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:textColor">@color/color_states_materialbutton</item>
+        <item name="iconTint">@color/color_states_materialbutton</item>
+        <item name="strokeColor">@color/color_states_materialbutton</item>
+        <item name="backgroundTint">@color/color_states_materialbutton_background</item>
     </style>
 </resources>
